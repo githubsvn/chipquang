@@ -1,0 +1,35 @@
+admin_config:
+    pattern:  /
+    defaults: { _controller: "SMAdminBundle:Config:index" }
+
+admin_config_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:Config:show" }
+
+admin_config_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:Config:new" }
+
+admin_config_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:Config:create" }
+    requirements: { _method: post }
+
+admin_config_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:Config:edit" }
+
+admin_config_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:Config:update" }
+    requirements: { _method: post }
+
+admin_config_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:Config:delete" }
+    requirements: { _method: post|get }
+
+admin_config_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Config:deleteAll" }
+    requirements: { _method: post }

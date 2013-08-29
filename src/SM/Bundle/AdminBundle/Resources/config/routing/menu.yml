@@ -1,0 +1,54 @@
+admin_menu:
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:Menu:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
+
+admin_menu_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:Menu:show" }
+
+admin_menu_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:Menu:new" }
+
+admin_menu_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:Menu:create" }
+    requirements: { _method: post }
+
+admin_menu_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:Menu:edit" }
+
+admin_menu_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:Menu:update" }
+    requirements: { _method: post }
+
+admin_menu_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:Menu:delete" }
+    requirements: { _method: post|get }
+
+admin_menu_up:
+    pattern:  /up/{id}
+    defaults: { _controller: "SMAdminBundle:Menu:up" }
+
+admin_menu_down:
+    pattern:  /down/{id}
+    defaults: { _controller: "SMAdminBundle:Menu:down" }
+
+admin_menu_get_param:
+    pattern:  /getParam/{type}
+    defaults: { _controller: "SMAdminBundle:Menu:getParam", type : null }
+
+admin_menu_get_menuparent:
+    pattern:  /getMenuParentByPosition/{position}
+    defaults: { _controller: "SMAdminBundle:Menu:getMenuParentByPosition", position : null }
+
+admin_menu_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Menu:deleteAll" }
+    requirements: { _method: post }

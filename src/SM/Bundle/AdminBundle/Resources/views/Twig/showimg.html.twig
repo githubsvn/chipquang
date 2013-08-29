@@ -1,0 +1,11 @@
+{% for img in arrImgs %}
+    {% if img != '' %}
+        <div style="width: 100px; height: 100px; float: bottom">
+            <img width="100px;" height="100px;" src="{{imgPath~'/'~img}}" />
+            <div style="width: 300px;">
+                <input type="checkbox" value="{{img}}" name="delImgs[]">{{ 'Checked if you want to delete this image'|trans({}, "SMAdminBundle") }}
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    {% endif %}
+{% endfor %}

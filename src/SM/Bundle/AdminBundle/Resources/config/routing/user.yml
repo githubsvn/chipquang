@@ -1,0 +1,35 @@
+admin_user:
+    pattern:  /
+    defaults: { _controller: "SMAdminBundle:User:index" }
+
+admin_user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:User:show" }
+
+admin_user_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:User:new" }
+
+admin_user_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:User:create" }
+    requirements: { _method: post }
+
+admin_user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:User:edit" }
+
+admin_user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:User:update" }
+    requirements: { _method: post }
+
+admin_user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:User:delete" }
+    requirements: { _method: post }
+
+admin_user_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:User:deleteAll" }
+    requirements: { _method: post }

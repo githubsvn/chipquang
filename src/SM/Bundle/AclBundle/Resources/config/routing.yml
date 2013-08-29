@@ -1,0 +1,3 @@
+sm_acl_homepage:
+    pattern:  /admin/acl
+    defaults: { _controller: SMAclBundle:Acl:index }

@@ -1,0 +1,80 @@
+mtx_acl:
+  resource: "@SMAclBundle/Resources/config/routing.yml"
+  prefix:   /
+
+mtx_admin:
+  resource: "@SMAdminBundle/Resources/config/routing.yml"
+  prefix:   /
+
+mtx_admin_user:
+  resource: "@SMAdminBundle/Resources/config/routing/user.yml"
+  prefix:   /admin/user
+
+mtx_admin_role:
+  resource: "@SMAdminBundle/Resources/config/routing/role.yml"
+  prefix:   /admin/role
+
+mtx_admin_group:
+  resource: "@SMAdminBundle/Resources/config/routing/group.yml"
+  prefix:   /admin/group
+
+# Internal routing configuration to handle ESI
+# ****** WARNING ******
+# This route should be enabled with caution as it can open a security vulnerability
+# see http://symfony.com/blog/security-release-symfony-2-0-20-and-2-1-5-released for more information
+# ****** WARNING ******
+#_internal:
+#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#    prefix:   /_internal
+
+mtx_admin_language:
+  resource: "@SMAdminBundle/Resources/config/routing/language.yml"
+  prefix:   /admin/language
+
+mtx_admin_companytype:
+  resource: "@SMAdminBundle/Resources/config/routing/companytype.yml"
+  prefix:   /admin/companytype
+
+mtx_admin_company:
+  resource: "@SMAdminBundle/Resources/config/routing/company.yml"
+  prefix:   /admin/company
+
+mtx_admin_branch:
+  resource: "@SMAdminBundle/Resources/config/routing/branch.yml"
+  prefix:   /admin/branch
+
+mtx_admin_mediacategory:
+  resource: "@SMAdminBundle/Resources/config/routing/mediacategory.yml"
+  prefix:   /admin/mediacategory
+
+mtx_admin_media:
+  resource: "@SMAdminBundle/Resources/config/routing/media.yml"
+  prefix:   /admin/media
+
+mtx_admin_products:
+  resource: "@SMAdminBundle/Resources/config/routing/products.yml"
+  prefix:   /admin/products
+
+mtx_admin_category:
+  resource: "@SMAdminBundle/Resources/config/routing/category.yml"
+  prefix:   /admin/category
+
+mtx_admin_menu:
+  resource: "@SMAdminBundle/Resources/config/routing/menu.yml"
+  prefix:   /admin/menu
+
+mtx_admin_news:
+  resource: "@SMAdminBundle/Resources/config/routing/news.yml"
+  prefix:   /admin/news
+
+mtx_admin_page:
+  resource: "@SMAdminBundle/Resources/config/routing/page.yml"
+  prefix:   /admin/page
+
+mtx_admin_config:
+  resource: "@SMAdminBundle/Resources/config/routing/config.yml"
+  prefix:   /admin/config
+
+_imagine:
+    resource: .
+    type: imagine

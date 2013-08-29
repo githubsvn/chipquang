@@ -1,0 +1,37 @@
+admin_language:
+    pattern:  /{page}
+    defaults: { _controller: "SMAdminBundle:Language:index", page: 1 }
+    requirements:
+        page:  \d+
+        
+admin_language_show:
+    pattern:  /show/{id}
+    defaults: { _controller: "SMAdminBundle:Language:show" }
+
+admin_language_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:Language:new" }
+
+admin_language_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:Language:create" }
+    requirements: { _method: post }
+
+admin_language_edit:
+    pattern:  /edit/{id}
+    defaults: { _controller: "SMAdminBundle:Language:edit" }
+
+admin_language_update:
+    pattern:  /update/{id}
+    defaults: { _controller: "SMAdminBundle:Language:update" }
+    requirements: { _method: post }
+
+admin_language_delete:
+    pattern:  /delete/{id}
+    defaults: { _controller: "SMAdminBundle:Language:delete" }
+    requirements: { _method: post|get }
+
+admin_language_set_default:
+    pattern:  /set-default/{id}
+    defaults: { _controller: "SMAdminBundle:Language:setDefault" }
+    requirements: { _method: get }

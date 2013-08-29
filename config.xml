@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <project name="DUKE REDO" basedir="." default="source">
+    <property name="builddir" value="${ws}/build" />
+    <!-- Clean old datas -->
+    <target name="clean">
+        <echo msg="Clean..." />
+        <delete dir="${builddir}" />
+    </target>
+    <!-- Preparing Evironment Report Folder structure -->
+    <target name="prepare">
+        <echo msg="Prepare..." />
+        <mkdir dir="${builddir}" />
+        <mkdir dir="${builddir}/logs" />
+        <mkdir dir="${builddir}/logs/coverage" />
+        <mkdir dir="${builddir}/docs" />
+    </target>
+    <!-- Deploy source -->
+    <target name="source">
+        <echo msg="We do nothing yet!" />
+    </target>
+    <!-- PHP API Documentation -->
+    <target name="phpdoc">
+        <echo msg="PHP Documentor..." />
+        <phpdoc title="API Documentation"
+                destdir="${builddir}/docs"
+                sourcecode="yes"
+                defaultpackagename="MHTest"
+                output="HTML:Smarty:PHP">
+            <fileset dir="./source">
+                <include name="**/*.php" />
+            </fileset>
+        </phpdoc>
+    </target>
+    <!-- PHPMD - PHP Mess Detector -->
+    <target name="phpmd">
+        <echo msg="PHPMD - PHP Mess Detector..." />
+        <exec command="phpmd ${ws}/source/src xml codesize,unusedcode,naming,design --reportfile ${builddir}/logs/pmd.xml" />
+    </target>
+    <!-- PHP copy/paste analysis -->
+    <target name="phpcpd">
+        <echo msg="PHP Copy/Paste..." />
+        <exec command="phpcpd --log-pmd ${builddir}/logs/cpd.xml --min-lines 20 --exclude ${ws}/source/src/SM/Bundle/AdminBundle/Classes --exclude ${ws}/source/src/SM/Bundle/AdminBundle/Entity ${ws}/source/src" escape="false" />
+    </target>
+    <!-- PHP dependency checker -->
+    <target name="pdepend">
+        <echo msg="PHP Depend..." />
+        <exec command="pdepend --jdepend-xml=${builddir}/logs/jdepend.xml ${ws}/source/src" escape="false" />
+    </target>
+    <!-- PHP CodeSniffer -->
+    <target name="phpcs">
+        <echo msg="PHP CodeSniffer..." />
+        <exec command="phpcs -n --standard=Symfony2 --ignore=${ws}/source/src/Acme,${ws}/source/src/SM/Bundle/AdminBundle/Entity --report=checkstyle ${ws}/source/src > ${builddir}/logs/checkstyle.xml" escape="false" />
+    </target>
+    <!-- Unit Tests & coverage analysis -->
+    <target name="phpunit">
+        <echo msg="PHP Unit..." />
+        <exec command="phpunit -c . --log-junit ${builddir}/logs/phpunit.xml --coverage-clover ${builddir}/logs/coverage/clover.xml --coverage-html ${builddir}/logs/coverage/" logoutput="TRUE" />
+    </target>
+</project>

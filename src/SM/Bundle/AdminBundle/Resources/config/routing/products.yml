@@ -1,0 +1,39 @@
+admin_products:
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:Products:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
+        _method: post|get
+
+admin_products_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:Products:show" }
+
+admin_products_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:Products:new" }
+
+admin_products_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:Products:create" }
+    requirements: { _method: post }
+
+admin_products_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:Products:edit" }
+
+admin_products_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:Products:update" }
+    requirements: { _method: post }
+
+admin_products_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:Products:delete" }
+    requirements: { _method: post|get }
+
+admin_products_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Products:deleteAll" }
+    requirements: { _method: post }

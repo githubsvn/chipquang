@@ -1,0 +1,39 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body %}
+<h2>{{ 'Language show'|trans({}, "SMAdminBundle") }}</h2>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <td>Id</td>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'Name'|trans({}, "SMAdminBundle") }}</td>
+            <td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'Lang key'|trans({}, "SMAdminBundle") }}</td>
+            <td>{{ entity.langkey }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'Is default'|trans({}, "SMAdminBundle") }}</td>
+            <td>
+                {% if entity.isdefault == 1 %}
+                    <input type="checkbox" checked="checked" disabled="true"/>
+                {% else %}
+                    <input type="checkbox" readonly="true" disabled="true"/>
+                {% endif%}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" width="100%">
+                <a href="{{ path('admin_language', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
+                &nbsp;
+                <a href="{{ path('admin_language_edit', { 'id': entity.id }) }}" class="btn">{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}

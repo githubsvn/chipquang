@@ -1,0 +1,42 @@
+{% extends 'SMAdminBundle::layout.login.html.twig' %}
+{% block body %}
+<form class="form-horizontal form-login" action="{{ path('sm_admin_login_check') }}" method="post">
+    <fieldset>
+        <legend>System Login</legend>
+        {% if error %}
+            <div class="alert alert-error">
+                {{ error.message }}
+            </div>
+        {% endif %}
+        <div class="control-group">
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">
+                        <i class="icon-user"></i>
+                    </span>
+                        <input class="span3" id="username" type="text" placeholder="Username" name="_username" value="{{ last_username }}">
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on">
+                        <i class="icon-lock"></i>
+                    </span>
+                    <input class="span3" id="password" type="password" placeholder="Password" name="_password" >
+                </div>
+            </div>
+        </div>
+        <div>
+            <label for="remember_me">
+                <input type="checkbox" id="remember_me" name="_remember_me" />
+                Keep me logged in
+            </label>
+        </div>
+    </fieldset>
+    <div class="form-actions">
+        <button name="login" type="submit" class="btn btn-primary" data-loading-text="Loading..." id="form-login-btnLogin">Login</button>
+    </div>
+</form>
+{% endblock %}

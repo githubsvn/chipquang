@@ -1,0 +1,42 @@
+{% extends 'SMAdminBundle::layout.html.twig' %}
+{% block body %}
+<h2>{{ 'User detail'|trans({}, "SMAdminBundle") }}</h2>
+
+<table class="table table-bordered table-striped">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Username'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.username }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Fullname'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.fullname }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Email'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Created_at'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Active'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.active }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<form action="{{ path('admin_user_delete', { 'id': entity.id }) }}" method="post" class="well form-inline">
+    <a class="btn" href="{{ path('admin_user') }}">
+        {{ 'Back to the list'|trans({}, "SMAdminBundle") }}
+    </a>
+    <a class="btn" href="{{ path('admin_user_edit', { 'id': entity.id }) }}">
+        {{ 'Edit'|trans({}, "SMAdminBundle") }}
+    </a>
+</form>
+{% endblock %}

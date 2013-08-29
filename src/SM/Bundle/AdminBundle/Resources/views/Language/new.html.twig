@@ -1,0 +1,41 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body %}
+<h2>{{ 'Language creation'|trans({}, "SMAdminBundle") }}</h2>
+
+<form action="{{ path('admin_language_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Name'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Lang key'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.lang_key) }}
+                {{ form_widget(form.lang_key) }}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="optionsCheckbox">{{ 'Is default'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+              <label class="checkbox">
+                    {{ form_errors(form.is_default) }}
+                    {{ form_widget(form.is_default) }}
+              </label>
+            </div>
+        </div>
+        <div class="form-actions">
+            {{ form_row(form._token) }}
+            <button type="submit" class="btn btn-primary">{{ 'Save'|trans({}, "SMAdminBundle") }}</button>
+            <a href="{{ path('admin_language', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
+        </div>
+
+    </fieldset>
+</form>
+
+{% endblock %}

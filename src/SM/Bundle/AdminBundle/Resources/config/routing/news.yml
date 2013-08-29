@@ -1,0 +1,38 @@
+admin_news:
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:News:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
+
+admin_news_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:News:show" }
+
+admin_news_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:News:new" }
+
+admin_news_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:News:create" }
+    requirements: { _method: post }
+
+admin_news_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:News:edit" }
+
+admin_news_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:News:update" }
+    requirements: { _method: post }
+
+admin_news_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:News:delete" }
+    requirements: { _method: post|get }
+
+admin_news_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:News:deleteAll" }
+    requirements: { _method: post }

@@ -1,0 +1,30 @@
+admin_group:
+    pattern:  /
+    defaults: { _controller: "SMAdminBundle:Group:index" }
+
+admin_group_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:Group:show" }
+
+admin_group_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:Group:new" }
+
+admin_group_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:Group:create" }
+    requirements: { _method: post }
+
+admin_group_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:Group:edit" }
+
+admin_group_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:Group:update" }
+    requirements: { _method: post }
+
+admin_group_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:Group:delete" }
+    requirements: { _method: post }

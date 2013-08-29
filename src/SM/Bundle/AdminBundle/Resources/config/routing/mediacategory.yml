@@ -1,0 +1,46 @@
+admin_mediacategory:
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:MediaCategory:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
+
+admin_mediacategory_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:MediaCategory:show" }
+
+admin_mediacategory_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:MediaCategory:new" }
+
+admin_mediacategory_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:MediaCategory:create" }
+    requirements: { _method: post }
+
+admin_mediacategory_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:MediaCategory:edit" }
+
+admin_mediacategory_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:MediaCategory:update" }
+    requirements: { _method: post }
+
+admin_mediacategory_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:MediaCategory:delete" }
+    requirements: { _method: post|get }
+
+admin_mediacategory_up:
+    pattern:  /up/{id}
+    defaults: { _controller: "SMAdminBundle:MediaCategory:up" }
+
+admin_mediacategory_down:
+    pattern:  /down/{id}
+    defaults: { _controller: "SMAdminBundle:MediaCategory:down" }
+
+admin_mediacategory_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:MediaCategory:deleteAll" }
+    requirements: { _method: post }

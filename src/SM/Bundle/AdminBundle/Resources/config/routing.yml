@@ -1,0 +1,15 @@
+sm_admin_login:
+    pattern:  /login
+    defaults: { _controller: SMAdminBundle:Security:login }
+
+sm_admin_login_check:
+    pattern:  /login_check
+    defaults: { _controller: SMAdminBundle:Security:check }
+
+sm_admin_logout:
+    pattern:  /logout
+    defaults: { _controller: SMAdminBundle:Security:logout }
+
+sm_admin_home:
+    pattern:  /admin
+    defaults: { _controller: SMAdminBundle:Default:index }

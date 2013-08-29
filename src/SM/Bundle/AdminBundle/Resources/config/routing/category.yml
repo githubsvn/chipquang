@@ -1,0 +1,46 @@
+admin_category:
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:Category:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
+
+admin_category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:Category:show" }
+
+admin_category_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:Category:new" }
+
+admin_category_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:Category:create" }
+    requirements: { _method: post }
+
+admin_category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:Category:edit" }
+
+admin_category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:Category:update" }
+    requirements: { _method: post }
+
+admin_category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:Category:delete" }
+    requirements: { _method: post|get }
+
+admin_category_up:
+    pattern:  /up/{id}
+    defaults: { _controller: "SMAdminBundle:Category:up" }
+
+admin_category_down:
+    pattern:  /down/{id}
+    defaults: { _controller: "SMAdminBundle:Category:down" }
+
+admin_category_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Category:deleteAll" }
+    requirements: { _method: post }

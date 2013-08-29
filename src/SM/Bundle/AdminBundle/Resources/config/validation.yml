@@ -1,0 +1,51 @@
+SM\Bundle\AdminBundle\Entity\Company:
+    properties:
+        type:
+            - NotNull: ~
+        email:
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+        charter_capital:
+            - Min:
+                limit: 0
+                message: You must be input greater than 0.
+            - Regex:
+                pattern: "/\d/"
+                message: Your charter capital is only valid.
+        logo:
+            - Image:
+                mimeTypesMessage: This file is not valid image
+                maxSize: 10M
+                maxSizeMessage: The file is too large ({{ size }}). Allowed maximum size is {{ limit }} M
+        website:
+            - Regex:
+                pattern: "/[a-z0-9A-Z]+(\.)[a-z0-9A-Z]+([a-zA-Z])/"
+                message: The url is not valid.
+
+
+SM\Bundle\AdminBundle\Entity\Products:
+    properties:
+        branch:
+            - NotNull:
+                message: Please choose this field.
+        price:
+            - Min:
+                limit: -1
+                message: You must be input greater than 0.
+            - Regex:
+                pattern: "/^[0-9]\d*(\.\d+)?$/"
+                message: You must input number for this field.
+        discount:
+            - Min:
+                limit: 0
+                message: You must be input greater than 0.
+            - Regex:
+                pattern: "/^[0-9]\d*(\.\d+)?$/"
+                message: You must input number for this field.
+        amount:
+            - Min:
+                limit: 0
+                message: You must be input greater than 0.
+            - Regex:
+                pattern: "/^[0-9]*$/"
+                message: You must input number for this field.

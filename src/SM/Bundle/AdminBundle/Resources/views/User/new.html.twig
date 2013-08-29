@@ -1,0 +1,57 @@
+{% extends 'SMAdminBundle::layout.html.twig' %}
+{% block body %}
+<h2>{{ 'User creation'|trans({}, "SMAdminBundle") }}</h2>
+
+<form action="{{ path('admin_user_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Username'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.username) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Fullname'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.fullname) }}
+                {{ form_widget(form.fullname) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Password'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.password) }}
+                {{ form_widget(form.password) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Email'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Roles'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.role_collection) }}
+                {{ form_widget(form.role_collection) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Group'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.group) }}
+                {{ form_widget(form.group) }}
+            </div>
+        </div>
+        <div class="form-actions">
+            {{ form_row(form._token) }}
+            <button type="submit" class="btn btn-primary">{{ 'Save'|trans({}, "SMAdminBundle") }}</button>
+            <a class="btn" href="{{ path('admin_user') }}">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
+        </div>
+
+    </fieldset>
+</form>
+{% endblock %}

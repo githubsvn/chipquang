@@ -1,0 +1,33 @@
+.PageNavigation {
+	color:#666; 
+	border:0px;
+}
+
+.PageNavigation a:link,
+.PageNavigation a:visited,
+.PageNavigation a:hover,
+.PageNavigation a:active {
+	text-decoration:none;
+	color: #636363;
+	font-family:Tahoma;
+	background:#F9F9F9;
+	border:1px solid #E6E6E6;
+	padding:3px 6px;
+	font-size:11px
+}
+
+.PageNavigation a:hover {
+	background:gray;
+	color:#FFFFFF;
+	font-family:Tahoma;
+	border-color:#E6E6E6;
+}
+
+.PageNavigation span {
+	text-decoration:none;
+	background:#fff;
+	padding:3px 6px;
+	border:1px solid #E6E6E6;
+	color:#ccc;
+	font-size:11px;
+}

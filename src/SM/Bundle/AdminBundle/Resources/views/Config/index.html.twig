@@ -1,0 +1,37 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body%}
+<h2>{{ 'Config List'|trans({}, "SMAdminBundle") }}</h2>
+
+<div class="nav">
+    <a href="{{ path('admin_config_new') }}" class="btn btn-primary">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
+    <a id="btn-del" class="btn btn-primary" rel="{{ path('admin_config_delete_all') }}">{{ 'Delete all'|trans({}, "SMAdminBundle") }}</a>
+</div>
+
+<form method="post" name="frmList" id="frmList" action="#">
+    <table class="table table-bordered table-striped" id="sortTable">
+        <thead>
+            <tr>
+                <th style="text-align: center;"><input type="checkbox" name="checkAll" id="checkAll"/></th>
+                <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Value'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td style="text-align: center;"><input type="checkbox" value="{{entity.getId}}" name="checklist[]" class="chkItem"/> </td>
+                <td>{{ entity.id }}</td>
+                <td> {{ entity.name }} </td>
+                <td> {{ entity.value }} </td>
+                <td>
+                    <a href="{{ path('admin_config_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
+                    <a href="#" rel="{{ path('admin_config_delete', { 'id': entity.getId }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}

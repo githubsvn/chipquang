@@ -1,0 +1,55 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body %}
+<h2>{{ 'Language edit'|trans({}, "SMAdminBundle") }}</h2>
+
+<form action="{{ path('admin_language_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Name'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(edit_form.name) }}
+                {{ form_widget(edit_form.name) }}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Lang key'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(edit_form.lang_key) }}
+                {{ form_widget(edit_form.lang_key) }}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="optionsCheckbox">{{ 'Is default'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+              <label class="checkbox">
+                    {{ form_errors(edit_form.is_default) }}
+                    {{ form_widget(edit_form.is_default) }}
+              </label>
+            </div>
+        </div>
+        <div class="form-actions">
+            {{ form_row(edit_form._token) }}
+            <button type="submit" class="btn btn-primary">{{ 'Save'|trans({}, "SMAdminBundle") }}</button>
+            <a href="{{ path('admin_language', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
+        </div>
+    </fieldset>
+</form>
+
+{#
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_language') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('admin_language_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+#}
+{% endblock %}

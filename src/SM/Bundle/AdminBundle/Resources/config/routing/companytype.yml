@@ -1,0 +1,38 @@
+admin_companytype:
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:CompanyType:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
+
+admin_companytype_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:CompanyType:show" }
+
+admin_companytype_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:CompanyType:new" }
+
+admin_companytype_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:CompanyType:create" }
+    requirements: { _method: post }
+
+admin_companytype_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:CompanyType:edit" }
+
+admin_companytype_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:CompanyType:update" }
+    requirements: { _method: post }
+
+admin_companytype_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:CompanyType:delete" }
+    requirements: { _method: post|get }
+
+admin_companytype_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:CompanyType:deleteAll" }
+    requirements: { _method: post }

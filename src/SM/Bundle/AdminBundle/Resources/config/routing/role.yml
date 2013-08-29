@@ -1,0 +1,30 @@
+admin_role:
+    pattern:  /
+    defaults: { _controller: "SMAdminBundle:Role:index" }
+
+admin_role_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:Role:show" }
+
+admin_role_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:Role:new" }
+
+admin_role_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:Role:create" }
+    requirements: { _method: post }
+
+admin_role_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:Role:edit" }
+
+admin_role_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:Role:update" }
+    requirements: { _method: post }
+
+admin_role_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:Role:delete" }
+    requirements: { _method: post }

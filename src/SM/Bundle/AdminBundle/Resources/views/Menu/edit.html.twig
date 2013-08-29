@@ -1,0 +1,193 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body %}
+<h2>{{ 'Menu Edit'|trans({}, "SMAdminBundle") }}</h2>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var type = $('#sm_bundle_adminbundle_menutype_type').attr('value');
+        var link = {{mnuTypeLink}};
+
+        if (type != link) {
+            $("#url").hide();
+            $("#param").show();
+            $("input[id=sm_bundle_adminbundle_menutype_url]").attr('value','');
+        } else {
+            $("#url").show();
+            $("#param").hide();
+        }
+
+
+
+        $("#sm_bundle_adminbundle_menutype_type").bind("change", function(){
+            var mnuTypeText = {{mnuTypeText}};
+            var mnuTypeLink = {{mnuTypeLink}};
+            var typeMenu = $(this).attr('value');
+
+            if (typeMenu == mnuTypeText || typeMenu == mnuTypeLink) {
+                $('#sm_bundle_adminbundle_menutype_param').removeAttr("required");
+            } else {
+                $("#sm_bundle_adminbundle_menutype_param").attr("required", "true");
+            }
+
+            if (typeMenu == mnuTypeLink) {
+                $("#url").show();
+                $("#param").hide();
+            } else {
+                $("#url").hide();
+                $("#param").show();
+            }
+
+            var urlMenu = "{{path('admin_menu_get_param')}}" + '/' + typeMenu;
+            $.ajax({url:urlMenu, success:function(data){
+                //remove all option of the select
+                $('#sm_bundle_adminbundle_menutype_param').children().remove();
+                //set new option for select
+                var jsonData = JSON.parse(data);
+                $.each(jsonData, function(index, item) {
+                    $("#sm_bundle_adminbundle_menutype_param").append("<option value=" + item.id + ">" + item.name + "</option>");
+                });
+            }});
+
+            //Call ajax
+            $('#ajaxModal').modal();
+            $('#ajaxModal').ajaxStart(function() {
+                $(this).show();
+            })
+            .ajaxStop(function() {
+                $('#ajaxModal').modal('hide')
+            });
+        });
+
+        $("#sm_bundle_adminbundle_menutype_position").bind("change", function(){
+            var position = $(this).attr('value');
+
+            var urlGetParent = "{{path('admin_menu_get_menuparent')}}" + '/' + position;
+            $.ajax({url:urlGetParent, success:function(data){
+                //remove all option of the select
+                $('#sm_bundle_adminbundle_menutype_parent').children().remove();
+                //set new option for select
+                var jsonData = JSON.parse(data);
+                $.each(jsonData, function(index, item) {
+                    $("#sm_bundle_adminbundle_menutype_parent").append("<option value=" + item.id + ">" + item.name + "</option>");
+                });
+            }});
+
+            //Call ajax
+            $('#ajaxModal').modal();
+            $('#ajaxModal').ajaxStart(function() {
+                $(this).show();
+            })
+            .ajaxStop(function() {
+                $('#ajaxModal').modal('hide')
+            });
+        });
+
+
+    });
+</script>
+
+<form action="{{ path('admin_menu_edit', {'id' : entity.id}) }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Position'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.position) }}
+                {{ form_widget(form.position) }}
+            </div>
+        </div>
+            
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Parent'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.parent) }}
+                {{ form_widget(form.parent) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Menu Type'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.type) }}
+                {{ form_widget(form.type) }}
+            </div>
+        </div>
+        <div class="control-group" id="url">
+            <label class="control-label" for="input01">{{ 'Menu Param'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.url) }}
+                {{ form_widget(form.url) }}
+            </div>
+        </div>
+        <div class="control-group" id="param">
+            <label class="control-label" for="input01">{{ 'Menu Param'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.param) }}
+                {{ form_widget(form.param) }}
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Status'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.status) }}
+                {{ form_widget(form.status) }}
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="tabbable"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                  {% set isActive = 1 %}
+                  {% for lang in langList %}
+                      {% if isActive == 1%}
+                          <li class="active"><a href="#tab{{ lang.id }}" data-toggle="tab">{{ lang.name }}</a></li>
+                      {% else %}
+                          <li><a href="#tab{{ lang.id }}" data-toggle="tab">{{ lang.name }}</a></li>
+                      {% endif %}
+                      {% set isActive = 2 %}
+                  {% endfor %}
+            </ul>
+            <div class="tab-content">
+                {% set isActive = 1 %}
+                {% for lang in langList %}
+                    {% set currentAL = null %}
+                    {% for ctLanguage in form.menu_languages%}
+                        {% if ctLanguage.vars.value.language.id == lang.id %}
+                            {% set currentAL = ctLanguage %}
+                        {% endif%}
+                    {% endfor %}
+                    {% if isActive == 1%}
+                        <div class="tab-pane active" id="tab{{ lang.id }}">
+                    {% else %}
+                        <div class="tab-pane" id="tab{{ lang.id }}">
+                    {% endif %}
+                            <fieldset>
+                                {% if currentAL is not null %}
+                                <div class="control-group">
+                                    <label class="control-label" for="input01">{{ 'Name'|trans({}, "SMAdminBundle") }}</label>
+                                    <div class="controls">
+                                        {{ form_errors(currentAL.name) }}
+                                        {% if defaultLanguage.name == currentAL.vars.value.language.name %}
+                                            {{ form_widget(currentAL.name, {'attr': {'required': 'required'}}) }}
+                                        {% else %}
+                                            {{ form_widget(currentAL.name) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {% endif%}
+                            </fieldset>
+                        </div>
+                    {% set isActive = 2 %}
+               {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-actions">
+            {{ form_row(form._token) }}
+            <button type="submit" class="btn btn-primary">{{ 'Save'|trans({}, "SMAdminBundle") }}</button>
+            <a href="{{ path('admin_menu', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
+        </div>
+
+    </fieldset>
+</form>
+
+{% endblock %}

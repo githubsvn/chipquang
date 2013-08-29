@@ -1,0 +1,108 @@
+	{% spaceless %}
+<a href="#backgroundModal" role="button" class="btn" data-toggle="modal">{{ 'Select image'|trans({}, "SMAdminBundle") }}</a>
+<!-- Modal -->
+<div id="backgroundModal" class="modal hide fade" style="width: 580px;" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="backgroundModalLabel">{{ 'Select image'|trans({}, "SMAdminBundle") }}</h3>
+    </div>
+    <div class="modal-body">
+        <div style="text-align: center;">
+            {{ 'Type of media'|trans({}, "SMAdminBundle") }} :
+            <select name="typeImg" id="typeImg">
+                {% for opt in optMediaTypes %}
+                    <option value="{{opt.id}}">{{opt.getCurrentLanguage.getTreeName}}</option>
+                {% endfor%}
+            </select>
+        </div>
+        <ul class="thumbnails">
+            {% for opt in optMedias %}
+                <li class="thumbImg" style="text-align: center;" data-type="{{opt.category.id}}">
+                    <label class="thumbnail" for="bg_{{ mediaName }}_{{ opt.id }}" style="border: 0px;">
+                        <img src="{{ mediaPath~opt.name }}" width="100px" height="100px;"/>
+                    </label>
+                    <input id="bg_{{ opt.id }}" name="bg_{{ mediaName }}" imagepath="{{ mediaPath~opt.name }}" type="{% if options.multiple is defined %}{% if options.multiple %}checkbox{% else %}radio{% endif %}{% else %}radio{% endif %}" value="{{ opt.id }}" style="margin-left: 40px;"/>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            {% if options.multiple is defined %}
+                {% if options.multiple %}
+                <div class="span2" style="width: 200px;">
+                        <a class="btn" onclick="checkAll('{{ mediaName }}');" >{{ 'Select All'|trans({}, "SMAdminBundle") }}</a>
+                        <a class="btn" onclick="clearAll('{{ mediaName }}');" >{{ 'Clear All'|trans({}, "SMAdminBundle") }}</a>
+                    </div>
+                {% endif %}
+            {% endif %}
+            <div class="pull-right">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">{{ 'Close'|trans({}, "SMAdminBundle") }}</button>
+                <button class="btn btn-primary" data-dismiss="modal" onclick="applySelect('{{ mediaName }}')">{{ 'Select'|trans({}, "SMAdminBundle") }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <ul class="thumbnails" id="preview_{{ mediaName }}">
+    </ul>
+</div>
+
+<script type="text/javascript" >
+    var mediaPath = "{{ mediaPath }}";
+    $(function() {
+        initSelect('{{ mediaName }}');
+        $('#backgroundModal').on('hidden', function () {
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var imgType = 0;
+
+        //get imgType
+        $("li.thumbImg").each(function(){
+            var currentLi = $(this);
+            var input = $(this).find("input");
+            if ($("#"+input.attr('id')).is(':checked')) {
+                imgType = currentLi.attr("data-type");
+            }
+        });
+
+        if (!imgType) {
+            imgType = $("#typeImg").val();
+        } else {
+            $("#typeImg").val(imgType);
+        }
+
+        $("li.thumbImg").each(function(){
+            var currentLi = $(this);
+            var liType;
+            liType = currentLi.attr("data-type");
+
+            if (liType == imgType) {
+                currentLi.css('display', 'inline');
+            } else {
+                currentLi.css('display', 'none');
+            }
+        });
+
+        $("#typeImg").bind("change", function(e) {
+            var imgType = $(this).val();
+            $("li.thumbImg").each(function(){
+                var currentLi = $(this);
+                var liType = currentLi.attr("data-type");
+                if (liType == imgType) {
+                    currentLi.css('display', 'inline');
+                } else {
+                    currentLi.css('display', 'none');
+                }
+            });
+        });
+    } );
+</script>
+
+{% endspaceless %}

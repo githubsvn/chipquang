@@ -1,0 +1,7 @@
+services:
+    sm.acl_manager:
+        class: SM\Bundle\AclBundle\Domain\AclManager
+        arguments:
+            aclProvider: "@security.acl.provider"
+            securityContext: "@security.context"
+            objectIdentityRetrievalStrategy: "@security.acl.object_identity_retrieval_strategy"

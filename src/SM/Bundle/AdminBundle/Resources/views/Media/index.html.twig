@@ -1,0 +1,86 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body%}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#sortTable').dataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": true,
+            "aaSorting": [ [2,'asc'], [3,'asc'] ],
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [ 0, 1, 4, 5 ] }
+            ],
+        });
+    } );
+</script>
+
+<h2>{{ 'Media List'|trans({}, "SMAdminBundle") }}</h2>
+
+<div class="nav">
+    <a href="{{ path('admin_media_new') }}" class="btn btn-primary">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
+
+    <a id="btn-del" class="btn btn-primary" rel="{{ path('admin_media_delete_all') }}">{{ 'Delete all'|trans({}, "SMAdminBundle") }}</a>
+</div>
+
+<form method="post" name="frmList" id="frmList" action="#">
+    <table class="table table-bordered table-striped" id="sortTable">
+        <thead>
+            <tr>
+                <th style="text-align: center;"><input type="checkbox" name="checkAll" id="checkAll"/></th>
+                <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Image'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Active'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td style="text-align: center;"><input type="checkbox" value="{{entity.id}}" name="checklist[]" class="chkItem"/> </td>
+                <td><a href="{{ path('admin_media_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>
+                    <image src="{{ imgPath ~ entity.name}}" width="100px" height="100px"/>
+                </td>
+                <td>{% if entity.createdat %}{{ entity.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    {% if entity.active == 1 %}
+                        <input type="checkbox" checked="checked" class="defaultCheckBox" disabled="true"/>
+                    {% else %}
+                        <input type="checkbox" class="defaultCheckBox" disabled="true"/>
+                    {% endif%}
+                </td>
+                <td>
+                    <a href="{{ path('admin_media_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
+                    &nbsp; | &nbsp;
+                    <a class="delete" rel="{{ path('admin_media_delete', { 'id': entity.id }) }}"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</form>
+
+{# Pagination for list #}
+{% if lastPage > 1 %}
+<div class="pagination" style="text-align: right;">
+    <ul>
+        <li><a href="{{ path('admin_media', { 'page': 1 }) }}"><i class="icon-fast-backward"></i></a></li>
+        <li><a href="{{ path('admin_media', { 'page': previousPage }) }}"><i class="icon-backward"></i></a></li>
+    {% for page in 1..lastPage %}
+      {% if page == currentPage %}
+        <li class="active"><a href="{{ path('admin_media', {'page': page }) }}">{{ page }}</a></li>
+      {% else %}
+        <li><a href="{{ path('admin_media', {'page': page }) }}">{{ page }}</a></li>
+      {% endif %}
+    {% endfor %}
+        <li><a href="{{ path('admin_media', {'page': nextPage }) }}"><i class="icon-forward"></i></a></li>
+        <li><a href="{{ path('admin_media', {'page': lastPage }) }}"><i class="icon-fast-forward"></i></a></li>
+    </ul>
+</div>
+{% endif %}
+
+{% endblock %}

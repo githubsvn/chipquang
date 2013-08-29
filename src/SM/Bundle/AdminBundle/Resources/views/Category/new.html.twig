@@ -1,0 +1,82 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body %}
+<h2>{{ 'Category Creation'|trans({}, "SMAdminBundle") }}</h2>
+
+<form action="{{ path('admin_category_new') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
+    <fieldset>
+
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Parent'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.parent) }}
+                {{ form_widget(form.parent) }}
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Status'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.status) }}
+                {{ form_widget(form.status, {'attr': {'checked': 'checked'}} ) }}
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="tabbable"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                  {% set isActive = 1 %}
+                  {% for lang in langList %}
+                      {% if isActive == 1%}
+                          <li class="active"><a href="#tab{{ lang.id }}" data-toggle="tab">{{ lang.name }}</a></li>
+                      {% else %}
+                          <li><a href="#tab{{ lang.id }}" data-toggle="tab">{{ lang.name }}</a></li>
+                      {% endif %}
+                      {% set isActive = 2 %}
+                  {% endfor %}
+            </ul>
+            <div class="tab-content">
+                {% set isActive = 1 %}
+                {% for lang in langList %}
+                    {% set currentAL = null %}
+                    {% for categoryLanguage in form.category_languages%}
+                        {% if categoryLanguage.vars.value.language.id == lang.id %}
+                            {% set currentAL = categoryLanguage %}
+                        {% endif%}
+                    {% endfor %}
+                    {% if isActive == 1%}
+                        <div class="tab-pane active" id="tab{{ lang.id }}">
+                    {% else %}
+                        <div class="tab-pane" id="tab{{ lang.id }}">
+                    {% endif %}
+                            <fieldset>
+                                {% if currentAL is not null %}
+                                <div class="control-group">
+                                    <label class="control-label" for="input01">{{ 'Name'|trans({}, "SMAdminBundle") }}</label>
+                                    <div class="controls">
+                                        {{ form_errors(currentAL.name) }}
+                                        {% if defaultLanguage.name == currentAL.vars.value.language.name %}
+                                            {{ form_widget(currentAL.name, {'attr': {'required': 'required'}}) }}
+                                        {% else %}
+                                            {{ form_widget(currentAL.name) }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                {% endif%}
+                            </fieldset>
+                        </div>
+                    {% set isActive = 2 %}
+               {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-actions">
+            {{ form_row(form._token) }}
+            <button type="submit" class="btn btn-primary">{{ 'Save'|trans({}, "SMAdminBundle") }}</button>
+            <a href="{{ path('admin_category', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
+        </div>
+
+    </fieldset>
+</form>
+
+{% endblock %}

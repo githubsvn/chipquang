@@ -1,0 +1,141 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body%}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#sortTable').dataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+            "bFilter": false,
+            "bSort": true,
+            "bInfo": false,
+            "bAutoWidth": true,
+            "aaSorting": [ [1,'asc'], [2,'asc'] ],
+            "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [ 0, 4, 5 ] }
+            ],
+        });
+    } );
+
+    $(document).ready(function() {
+        $("#btnReset").click(function() {
+            $("#name").val('');
+            $("#type").val('');
+        });
+    } );
+
+</script>
+
+<h2>{{ 'Company List'|trans({}, "SMAdminBundle") }}</h2>
+
+<div class="nav" style="margin-bottom: 10px;">
+    <a href="{{ path('admin_company_new') }}" class="btn btn-primary">{{ 'Create a new entry'|trans({}, "SMAdminBundle") }}</a>
+    <a id="btn-del" class="btn btn-primary" rel="{{ path('admin_company_delete_all') }}">{{ 'Delete all'|trans({}, "SMAdminBundle") }}</a>
+
+    <div class="btn-group pull-right">
+        <a href="javascript:void(0)" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+            {% for opt in langList %}
+                {% if lang == opt.id %}
+                {{ opt.name }} <span class="caret"></span>
+                {% endif %}
+            {% endfor %}
+        </a>
+        <ul class="dropdown-menu">
+            {% for opt in langList %}
+                <li><a href="{{ path('admin_company', {'page': 1, 'lang' : opt.id }) }}">{{ opt.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div style="clear: both; margin-top: 10px;"></div>
+    <div class="btn-group pull-center">
+        <form class="well form-search" method="POST" action="{{ path('admin_company') }}" style="margin-bottom: 10px;">
+            {{ 'Name'|trans({}, "SMAdminBundle") }} : <input type="text" name="name" value="{{name}}" id="name">
+            {{ 'Company Type'|trans({}, "SMAdminBundle") }} : <select name="type" id="type">
+                        <option value="">-- {{ 'Select'|trans({}, "SMAdminBundle") }} -- </option>
+                        {% for comType in optComTypes %}
+                            {% if comType.getCurrentLanguage is not null %}
+                                <option value="{{comType.id}}" {% if comType.id == type %} selected="selected"{% endif %}>
+                                    {{ comType.getCurrentLanguage.name | truncate(50) }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <input type="hidden" name="language" value="{{lang}}"/>
+            <button type="submit" class="btn" style="width: 100px;">{{ 'Search'|trans({}, "SMAdminBundle") }}</button>
+            <button type="submit" class="btn" style="width: 100px;" id="btnReset">{{ 'Reset'|trans({}, "SMAdminBundle") }}</button>
+        </form>
+    </div>
+</div>
+<div style="clear: both; margin-bottom: 10px;"></div>
+
+<form method="post" name="frmList" id="frmList" action="#">
+    <table class="table table-bordered table-striped" id="sortTable">
+        <thead>
+            <!--
+            <tr>
+                <th colspan="2" style="text-align: left;">{{ 'Total'|trans({}, "SMAdminBundle") }} : {{total}} - {{ 'Page'|trans({}, "SMAdminBundle") }} : ({{currentPage}}/{{lastPage}})</th>
+                <th colspan="3"></th>
+            </tr>
+            -->
+            <tr>
+                <th style="text-align: center;"><input type="checkbox" name="checkAll" id="checkAll"/></th>
+                <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Name'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Status'|trans({}, "SMAdminBundle") }}</th>
+                <th>{{ 'Action'|trans({}, "SMAdminBundle") }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td style="text-align: center;"><input type="checkbox" value="{{entity.id}}" name="checklist[]" class="chkItem"/> </td>
+                <td>{{ entity.company.id }}</td>
+                <td>
+                    {% if entity.name is not null %}
+                        {{ entity.name | truncate(50) }}
+                    {% else %}
+                        <span class="label label-warning">{{ 'Not set value in this language' | trans({}, 'SMAdminBundle') }}</span>
+                    {% endif %}
+                </td>
+                <td>{% if entity.company.createdAt %}{{ entity.company.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    {% if entity.company.status == 1 %}
+                        <input type="checkbox" checked="checked" class="defaultCheckBox" disabled="true"/>
+                    {% else %}
+                        <input type="checkbox" class="defaultCheckBox" disabled="true"/>
+                    {% endif%}
+                </td>
+                <td>
+                    <a href="{{ path('admin_company_edit', { 'id': entity.company.id }) }}"><i class="icon-pencil"></i>{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
+                    {% if entity.language is not null %}
+                        &nbsp; | &nbsp;
+                        <a href="#" rel="{{ path('admin_company_delete', { 'id': entity.id }) }}" class="delete"><i class="icon-remove"></i>{{ 'Delete'|trans({}, "SMAdminBundle") }}</a>
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</form>
+
+{# Pagination for list #}
+{% if lastPage > 1 %}
+<div class="pagination pull-right">
+    <ul>
+        <li><a href="{{ path('admin_company', { 'page': 1, 'lang' : lang }) }}"><i class="icon-fast-backward"></i></a></li>
+        <li><a href="{{ path('admin_company', { 'page': previousPage, 'lang' : lang }) }}"><i class="icon-backward"></i></a></li>
+    {% for page in 1..lastPage %}
+      {% if page == currentPage %}
+        <li class="active"><a href="{{ path('admin_company', {'page': page, 'lang' : lang }) }}">{{ page }}</a></li>
+      {% else %}
+        <li><a href="{{ path('admin_company', {'page': page, 'lang' : lang } )}}">{{ page }}</a></li>
+      {% endif %}
+    {% endfor %}
+        <li><a href="{{ path('admin_company', {'page': nextPage, 'lang' : lang }) }}"><i class="icon-forward"></i></a></li>
+        <li><a href="{{ path('admin_company', {'page': lastPage, 'lang' : lang }) }}"><i class="icon-fast-forward"></i></a></li>
+    </ul>
+</div>
+{% endif %}
+
+{% endblock %}

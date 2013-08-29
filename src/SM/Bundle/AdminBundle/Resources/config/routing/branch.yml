@@ -1,0 +1,45 @@
+admin_branch:
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:Branch:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
+admin_branch_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:Branch:show" }
+
+admin_branch_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:Branch:new" }
+
+admin_branch_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:Branch:create" }
+    requirements: { _method: post }
+
+admin_branch_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:Branch:edit" }
+
+admin_branch_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:Branch:update" }
+    requirements: { _method: post }
+
+admin_branch_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:Branch:delete" }
+    requirements: { _method: post|get }
+
+admin_branch_up:
+    pattern:  /up/{id}
+    defaults: { _controller: "SMAdminBundle:Branch:up" }
+
+admin_branch_down:
+    pattern:  /down/{id}
+    defaults: { _controller: "SMAdminBundle:Branch:down" }
+
+admin_branch_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:Branch:deleteAll" }
+    requirements: { _method: post }

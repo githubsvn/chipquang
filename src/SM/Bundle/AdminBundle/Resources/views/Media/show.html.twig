@@ -1,0 +1,54 @@
+{% extends 'SMAdminBundle::admin.html.twig' %}
+{% block body %}
+<h2>{{ 'Media Show'|trans({}, "SMAdminBundle") }}</h2>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>{{ 'Id'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Image'|trans({}, "SMAdminBundle") }}</th>
+            <td><image src="/web/uploads/{{ entity.name}}" width="100px" height="100px"/></td>
+        </tr>
+        <tr>
+            <th>{{ 'Category'|trans({}, "SMAdminBundle") }}</th>
+            <td>
+                {% if entity.category %}
+                    {{ entity.category.name }}
+                {% endif%}
+            </td>
+        </tr>
+        <tr>
+            <th>{{ 'Width'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.width }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Height'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.height }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Created Time'|trans({}, "SMAdminBundle") }}</th>
+            <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'Active'|trans({}, "SMAdminBundle") }}</th>
+            <td>
+                {% if entity.active == 1 %}
+                    <input type="checkbox" checked="checked" class="defaultCheckBox" disabled="true"/>
+                {% else %}
+                    <input type="checkbox" class="defaultCheckBox" disabled="true"/>
+                {% endif%}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" width="100%">
+                <a href="{{ path('admin_media', {'page' : 1}) }}" class="btn">{{ 'Back to the list'|trans({}, "SMAdminBundle") }}</a>
+                &nbsp;
+                <a href="{{ path('admin_media_edit', { 'id': entity.id }) }}" class="btn">{{ 'Edit'|trans({}, "SMAdminBundle") }}</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

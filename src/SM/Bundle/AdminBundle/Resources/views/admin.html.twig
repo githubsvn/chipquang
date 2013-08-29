@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Administrator{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+        {% block stylesheets %}
+        <link href="{{ asset('web/static/admin/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('web/static/admin/js/DataTables/media/css/demo_table.css') }}" rel="stylesheet">
+
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+            .sidebar-nav {
+                padding: 9px 0;
+            }
+        </style>
+        <link href="{{ asset('web/static/admin/css/bootstrap-responsive.css') }}" rel="stylesheet">
+        <link href="{{ asset('web/static/admin/css/prettify.css') }}" rel="stylesheet">
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+              <!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js') }}"></script>-->
+            <![endif]-->
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('web/static/admin/ico/apple-touch-icon-144-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('web/static/admin/ico/apple-touch-icon-114-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('web/static/admin/ico/apple-touch-icon-72-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" href="{{ asset('web/static/admin/ico/apple-touch-icon-57-precomposed.png') }}">
+        {% endblock %}
+
+        <script src="{{ asset('web/static/admin/js/jquery-1.7.2.min.js') }}"></script>
+
+        </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    {% block logo%}
+                    <a style="padding-top: 12px;" class="brand" href="{{path('sm_admin_home')}}">{{ 'Welcome'|trans({}, "SMAdminBundle") }}</a>
+                    {% endblock %}
+                    {% block profile %}
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+                            <i class="icon-user icon-white"></i>{% if app.user is defined %} {{ app.user.fullname }} {% endif %}<span class="caret"></span> </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url('admin_user_edit', {id: app.user.id})}}">{{ 'Profile'|trans({}, "SMAdminBundle") }}</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{path('sm_admin_logout')}}">{{ 'Sign Out'|trans({}, "SMAdminBundle") }}</a></li>
+                        </ul>
+                    </div>
+                    {% endblock %}
+                    <ul class="nav">
+                        {% block topbar_before_nav %} {% endblock %}
+                        {% block topbar_nav %}
+                            {% if app.security.token and is_granted('ROLE_ADMIN') %}
+                                {% render 'SMAdminBundle:Default:menu' %}
+                            {% endif %}
+                        {% endblock %}
+                        {% block topbar_after_nav %} {% endblock %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    {% block grouplabel %}
+                        {% if _grouplabel is defined%}
+                        <h1>{{ _grouplabel }}</h1>
+                        {% endif %}
+                    {% endblock%}
+                    {% if _breadcrumb is defined and _breadcrumb is not empty or action is defined %}
+                        <ul class="breadcrumb">
+                            {% if _breadcrumb is empty %}
+                                {% if action is defined %}
+                                    {% for label, uri in admin.breadcrumbs(action) %}
+                                        {% if not loop.last  %}
+                                            <li><a href="{{ uri }}">{{ label }}</a><span class="divider">/</span></li>
+                                        {% else %}
+                                            <li class="active">{{ label }}</li>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% else %}
+                                {{ _breadcrumb|raw }}
+                            {% endif %}
+                        </ul>
+                        <hr/>
+                    {% endif %}
+
+                    {% block notice %}
+                        {% for notice_level in ['success','error','info', 'warning'] %}
+                            {% set session_var = 'sm_flash_' ~ notice_level %}
+                            {% set session_flashbag = app.session.flashbag.get(session_var) %}
+                            {% if session_flashbag %}
+                                {% for flash in session_flashbag %}
+                                <div class="alert {{ 'alert-' ~ notice_level }}">
+                                    {{ flash|trans([], 'SMAdminBundle') }}
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endblock %}
+
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+            {% block footer %}
+            <hr/>
+            <footer>
+                <p>&copy; Admin Panel 2013</p>
+            </footer>
+            {% endblock %}
+        </div>
+        <!-- Loading image will be show when ajax called. -->
+        <div class="modal hide" id="ajaxModal" style="text-align: center;">
+            <img alt="Loading, please wait.." src="{{ asset('web/static/admin/img/loading.gif') }}" />
+        </div>
+
+
+        <!-- This block is contain language for JS-->
+        <script type="text/javascript">
+            var js_lang_do_you_want_to_delete = '{{ "Do you want to delete"|trans({}, 'SMAdminBundle') }}';
+            var js_lang_please_choose_at_least_one_item = '{{ "Please choose at least one item"|trans({}, 'SMAdminBundle') }}';
+        </script>
+
+        <!-- -->
+
+        <!-- Le javascript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        {% block javascripts %}
+        <script src="{{ asset('web/static/admin/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('web/static/admin/js/prettify.js') }}"></script>
+        <script src="{{ asset('web/static/admin/js/common.js') }}"></script>
+        <script src="{{ asset('/web/static/admin/js/twig.js') }}"></script>
+<script src="{{ asset('web/static/admin/js/DataTables/media/js/jquery.dataTables.js') }}"></script>
+        {% endblock%}
+        {{ tinymce_init() }}
+    </body>
+</html>

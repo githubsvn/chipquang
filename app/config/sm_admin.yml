@@ -1,0 +1,21 @@
+sm_admin:
+  dashboard:
+    - { class: SM\Bundle\AdminBundle\Entity\User,   group: HỆ THỐNG, label: QL Người Dùng,   acl: true,  action: [admin_user_new, admin_user] }
+    - { class: SM\Bundle\AdminBundle\Entity\Language,   group: HỆ THỐNG, label: QL Ngôn Ngữ,   acl: true,  action: [admin_language_new, admin_language] }
+    - { class: SM\Bundle\AdminBundle\Entity\Menu,   group: HỆ THỐNG, label: QL Menu,   acl: true,  action: [admin_menu_new, admin_menu] }
+    - { class: SM\Bundle\AdminBundle\Entity\Config,   group: HỆ THỐNG, label: QL Tham Số,   acl: true,  action: [admin_config_new, admin_config] }
+    
+    - { class: SM\Bundle\AdminBundle\Entity\MediaCategory,   group: MEDIA, label: QL Thể Loại,   acl: true,  action: [admin_mediacategory_new, admin_mediacategory] }
+    - { class: SM\Bundle\AdminBundle\Entity\Media,   group: MEDIA, label: QL Media,   acl: true,  action: [admin_media_new, admin_media] }
+
+    - { class: SM\Bundle\AdminBundle\Entity\CompanyType,   group: CÔNG TY, label: QL Loại Hình CTY,   acl: true,  action: [admin_companytype_new, admin_companytype] }
+    - { class: SM\Bundle\AdminBundle\Entity\Company,   group: CÔNG TY, label: QL Công Ty,   acl: true,  action: [admin_company_new, admin_company] }
+
+    - { class: SM\Bundle\AdminBundle\Entity\Branch,   group: SẢN PHẨM, label: QL Ngành Hàng,   acl: true,  action: [admin_branch_new, admin_branch] }
+    - { class: SM\Bundle\AdminBundle\Entity\Products,   group: SẢN PHẨM, label: QL Sản Phảm,   acl: true,  action: [admin_products_new, admin_products] }
+
+    - { class: SM\Bundle\AdminBundle\Entity\Category,   group: TIN TỨC, label: QL Chuyên Mục,   acl: true,  action: [admin_category_new, admin_category] }
+    - { class: SM\Bundle\AdminBundle\Entity\News,   group: TIN TỨC, label: QL Tin tức,   acl: true,  action: [admin_news_new, admin_news] }
+    - { class: SM\Bundle\AdminBundle\Entity\Page,   group: TIN TỨC, label: QL Trang tỉnh,   acl: true,  action: [admin_page_new, admin_page] }
+
+  templates: 5
