@@ -2,18 +2,19 @@ parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1
     database_port: null
-    database_name: local.tyhv
+    database_name: jovial
     database_user: root
     database_password:
-    host : http://local.tyhv
+    host : http://local.jovial
     locale: vi
     secret: d00245c7bda39aa016baa57370bfebc9b11deda3
     database_path: null
-
+    color: ['0000cc','00ff00','ff0000','ffff00','ffffff','000000']
+    
     per_item_page: 50
     imgRoot : "/web/"
-    upload : "/web/uploads/images/"
-    thumbUpload : "/web/uploads/images/media/cache/thumbs/"
+    upload : "/uploads/images/"
+    thumbUpload : "/media/cache/thumbs/"
 
     menu_type_company_category: 1
     menu_type_company_detail: 2
@@ -28,7 +29,28 @@ parameters:
 
     menu_position_top: 1
     menu_position_left: 2
-    menu_position_right: 3
-    menu_position_bottom: 4
-
+    menu_position_left_bottom: 3
+    menu_position_right: 4
+    menu_position_bottom: 5
+    
     ext_nice_url: html
+    comma_nice_url: "-"
+    
+    per_item_page_front: 12
+    per_page_front: 5
+    per_item_new_front: 6
+    
+    per_item_news_hot_front: 3
+    per_item_news_front: 7
+    
+    number_slide_show: 4
+    
+    support_skype: [skype]
+    support_yahoo: [yahoo]
+    
+    countWordNewsTitle: 10
+    
+    countWordNewsTitleList: 20
+    countWordNewsIntro: 50
+    
+    countWordProductTitle: 4

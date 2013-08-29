@@ -67,6 +67,7 @@ class MenuController extends Controller
         $this->container->getParameter('per_item_page');
         $mnuPosTop = $this->container->getParameter('menu_position_top');
         $mnuPosLeft = $this->container->getParameter('menu_position_left');
+        $mnuPosLeftBottom = $this->container->getParameter('menu_position_left_bottom');
         $mnuPosRight = $this->container->getParameter('menu_position_right');
         $mnuPosBottom = $this->container->getParameter('menu_position_bottom');
 
@@ -82,6 +83,9 @@ class MenuController extends Controller
                     break;
                 case $mnuPosLeft:
                     $theCat->setPosition('Left');
+                    break;
+                case $mnuPosLeftBottom:
+                    $theCat->setPosition('Left Bottom');
                     break;
                 case $mnuPosRight:
                     $theCat->setPosition('Right');
@@ -455,7 +459,7 @@ class MenuController extends Controller
         switch ($type) {
             case $mnuTypeCompanyCat:
                 $repo = $em->getRepository('SMAdminBundle:CompanyType');
-                $url = "/company/view-cat/";
+                $url = "/company/view-cat/1/";
                 $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeCompanyDetail:
@@ -465,7 +469,7 @@ class MenuController extends Controller
                 break;
             case $mnuTypeProductBranch:
                 $repo = $em->getRepository('SMAdminBundle:Branch');
-                $url = "/product/view-branch/";
+                $url = "/product/view-branch/1/";
                 $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeProductDetail:
@@ -475,7 +479,7 @@ class MenuController extends Controller
                 break;
             case $mnuTypeNewsCat:
                 $repo = $em->getRepository('SMAdminBundle:Category');
-                $url = "/news/view-cat/";
+                $url = "/news/view-cat/1/";
                 $url = $this->getAliasForMenu($repo, $param, $url, $idMenu);
                 break;
             case $mnuTypeNewsDetail:
@@ -509,6 +513,7 @@ class MenuController extends Controller
     {
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
         $ext = $container->getParameter('ext_nice_url');
+        $comma = $container->getParameter('comma_nice_url');
 
         //get list language
         $repLanguage = $this->getDoctrine()
@@ -526,8 +531,8 @@ class MenuController extends Controller
 
         $entity->setLanguage($defaultLanguage);
         $name = $entity->getCurrentLanguage()->getName();
-        $name = \SM\Bundle\AdminBundle\Utilities\Helper::cleanString($name, '_');
-        $alias =  $url. $name . "_$id.$ext";
+        $name = \SM\Bundle\AdminBundle\Utilities\Helper::cleanString($name, $comma);
+        $alias =  $url. $name . "$comma$id.$ext";
 
         //check menu is exist in table menu
         $repMenu = $this->getDoctrine()->getRepository("SMAdminBundle:Menu");
@@ -535,15 +540,14 @@ class MenuController extends Controller
         if ($isExist) {
             $lastestMenu = $repMenu->getLastestItem();
             $lastestId = $lastestMenu->getId() + 1;
-            $alias =  $url. $name . "_$lastestId"."_$id.".$ext;
+            $alias =  $url. $name . "$comma$lastestId"."$comma$id.".$ext;
         }
 
         $isExist = $repMenu->findBy(array('url' => $alias));
         if ($isExist) {
             $lastestId = $lastestId + 1;
-            $alias =  $url. $name . "_$lastestId"."_$id.".$ext;
+            $alias =  $url. $name . "$comma$lastestI"."$comma$id.".$ext;
         }
-
 
         return $alias;
     }
