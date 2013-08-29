@@ -2,10 +2,10 @@ parameters:
     database_driver: pdo_mysql
     database_host: 127.0.0.1
     database_port: null
-    database_name: jovial
+    database_name: local.chipquang
     database_user: root
     database_password:
-    host : http://local.jovial
+    host : http://local.chipquang
     locale: vi
     secret: d00245c7bda39aa016baa57370bfebc9b11deda3
     database_path: null
