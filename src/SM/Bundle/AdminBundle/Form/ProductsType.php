@@ -25,7 +25,6 @@ class ProductsType extends AbstractType
                 ))
                 ->add('price', null, array(
                     'required' => false,
-                    'data' => 0
                 ))
                 ->add('unit', null, array('required' => false))
                 ->add('discount', null, array(
@@ -41,6 +40,9 @@ class ProductsType extends AbstractType
                     'data' => 0
                 ))
                 ->add('status', 'checkbox', array(
+                    'required' => false
+                ))
+                ->add('hot', 'checkbox', array(
                     'required' => false
                 ))
                 ->add('product_languages', 'collection', array('type' => new ProductLanguageType()))

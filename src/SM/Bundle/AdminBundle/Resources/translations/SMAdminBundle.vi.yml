@@ -75,10 +75,10 @@ Media Category Edit: Chỉnh Sửa Thể Loại Media
 Media Category Show: Chi Tiết Thể Loại Media
 
 #Media
-Media List: Danh Sách Media
+Media List: Danh Sách Hình Ảnh
 Image: Hình ảnh
-Media Creation: Thêm Mới Media
-Category: Thể loại media
+Media Creation: Thêm Mới Hình Ảnh
+Category: Thể loại hình ảnh
 File: Tập tin
 Width: Chiều rộng
 Height: Chiều cao
@@ -128,6 +128,7 @@ Thumbnail: Hình đại diện
 Description: Mô tả
 Product Edit: Chỉnh Sửa Sản Phẩm
 Results of search product: Kết quả tìm kiếm
+Hot Product: Sản phẩm nổi bật?
 
 #Category
 Category List: Danh Sách Chuyên Mục

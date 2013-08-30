@@ -312,7 +312,6 @@ class ProductsController extends Controller
             $form->bind($this->getRequest());
 
             if ($form->isValid()) {
-
                 //Set created and updated user
                 $currUser = $this->get('security.context')->getToken()->getUser();
                 $entity->setUpdated($currUser);

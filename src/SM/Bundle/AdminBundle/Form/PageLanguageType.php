@@ -17,13 +17,13 @@ class PageLanguageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', null, array('required' => true))
+        $builder->add('name', null, array('required' => false))
                 ->add('intro', 'textarea', array(
                     'attr' => array(
                         'class' => 'tinymce',
                         'data-theme' => 'medium',
                     ),
-                    'required' => true
+                    'required' => false
                 ))
                 ->add('description', 'textarea', array(
                     'attr' => array(

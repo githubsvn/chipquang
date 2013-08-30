@@ -27,7 +27,15 @@
                 {{ form_widget(form.status) }}
             </div>
         </div>
-
+        
+        <div class="control-group">
+            <label class="control-label" for="input01">{{ 'Hot Product'|trans({}, "SMAdminBundle") }}</label>
+            <div class="controls">
+                {{ form_errors(form.hot) }}
+                {{ form_widget(form.hot) }}
+            </div>
+        </div>
+        
         <div class="control-group">
             <label class="control-label" for="input01">{{ 'Thumbnail'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">

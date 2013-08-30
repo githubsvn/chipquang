@@ -6,7 +6,7 @@ sm_admin:
     - { class: SM\Bundle\AdminBundle\Entity\Config,   group: HỆ THỐNG, label: QL Tham Số,   acl: true,  action: [admin_config_new, admin_config] }
     
     - { class: SM\Bundle\AdminBundle\Entity\MediaCategory,   group: MEDIA, label: QL Thể Loại,   acl: true,  action: [admin_mediacategory_new, admin_mediacategory] }
-    - { class: SM\Bundle\AdminBundle\Entity\Media,   group: MEDIA, label: QL Media,   acl: true,  action: [admin_media_new, admin_media] }
+    - { class: SM\Bundle\AdminBundle\Entity\Media,   group: MEDIA, label: QL Hình Ảnh,   acl: true,  action: [admin_media_new, admin_media] }
 
     - { class: SM\Bundle\AdminBundle\Entity\CompanyType,   group: CÔNG TY, label: QL Loại Hình CTY,   acl: true,  action: [admin_companytype_new, admin_companytype] }
     - { class: SM\Bundle\AdminBundle\Entity\Company,   group: CÔNG TY, label: QL Công Ty,   acl: true,  action: [admin_company_new, admin_company] }
