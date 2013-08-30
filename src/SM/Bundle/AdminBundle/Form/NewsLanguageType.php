@@ -23,7 +23,7 @@ class NewsLanguageType extends AbstractType
                         'class' => 'tinymce',
                         'data-theme' => 'medium',
                     ),
-                    'required' => true
+                    'required' => false
                 ))
                 ->add('description', 'textarea', array(
                     'attr' => array(

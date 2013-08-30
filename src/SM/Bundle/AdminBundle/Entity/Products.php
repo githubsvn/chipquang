@@ -66,6 +66,13 @@ class Products
      * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="hot", type="boolean", nullable=true)
+     */
+    private $hot;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")

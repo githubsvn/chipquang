@@ -89,6 +89,8 @@ class Utilities
     public static function getRootDir()
     {
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
-        return $container->get('kernel')->getRootDir() . '/../';
+        
+        return $_SERVER['DOCUMENT_ROOT'];
+        //return $container->get('kernel')->getRootDir() . '/../';
     }
 }

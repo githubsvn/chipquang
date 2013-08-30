@@ -13,14 +13,6 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="input01">{{ 'Charter Capital'|trans({}, "SMAdminBundle") }}</label>
-            <div class="controls">
-                {{ form_errors(form.charter_capital) }}
-                {{ form_widget(form.charter_capital) }}
-            </div>
-        </div>
-
-        <div class="control-group">
             <label class="control-label" for="input01">{{ 'Phone'|trans({}, "SMAdminBundle") }}</label>
             <div class="controls">
                 {{ form_errors(form.phone) }}
@@ -33,14 +25,6 @@
             <div class="controls">
                 {{ form_errors(form.fax) }}
                 {{ form_widget(form.fax) }}
-            </div>
-        </div>
-
-        <div class="control-group">
-            <label class="control-label" for="input01">{{ 'Mst'|trans({}, "SMAdminBundle") }}</label>
-            <div class="controls">
-                {{ form_errors(form.mst) }}
-                {{ form_widget(form.mst) }}
             </div>
         </div>
 
@@ -139,19 +123,6 @@
                                             {% endif %}
                                         </div>
                                     </div>
-
-                                    <div class="control-group">
-                                        <label class="control-label" for="input01">{{ 'Representation'|trans({}, "SMAdminBundle") }}</label>
-                                        <div class="controls">
-                                            {{ form_errors(currentAL.representation) }}
-                                            {% if defaultLanguage.name == currentAL.vars.value.language.name %}
-                                                {{ form_widget(currentAL.representation) }}
-                                            {% else %}
-                                                {{ form_widget(currentAL.representation) }}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-
                                 {% endif%}
                             </fieldset>
                         </div>
