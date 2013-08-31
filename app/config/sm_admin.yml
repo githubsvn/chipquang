@@ -13,7 +13,7 @@ sm_admin:
     - { class: SM\Bundle\AdminBundle\Entity\Company,   group: CÔNG TY, label: QL Công Ty,   acl: true,  action: [admin_company_new, admin_company] }
 
     - { class: SM\Bundle\AdminBundle\Entity\Branch,   group: SẢN PHẨM, label: QL Ngành Hàng,   acl: true,  action: [admin_branch_new, admin_branch] }
-    - { class: SM\Bundle\AdminBundle\Entity\Products,   group: SẢN PHẨM, label: QL Sản Phảm,   acl: true,  action: [admin_products_new, admin_products] }
+    - { class: SM\Bundle\AdminBundle\Entity\Products,   group: SẢN PHẨM, label: QL Sản Phẩm,   acl: true,  action: [admin_products_new, admin_products] }
 
     - { class: SM\Bundle\AdminBundle\Entity\Category,   group: TIN TỨC, label: QL Chuyên Mục,   acl: true,  action: [admin_category_new, admin_category] }
     - { class: SM\Bundle\AdminBundle\Entity\News,   group: TIN TỨC, label: QL Tin tức,   acl: true,  action: [admin_news_new, admin_news] }

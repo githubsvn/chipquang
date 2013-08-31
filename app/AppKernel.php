@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
+            new SM\Bundle\FrontBundle\SMFrontBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

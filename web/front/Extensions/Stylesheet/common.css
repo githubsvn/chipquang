@@ -1,0 +1,12 @@
+.order-button-container{ text-align: right; float: right; width: 460px; margin: 10px 0px; }
+.clear{ overflow: hidden; width: 100%; }
+.order-button-container a.button{ background: transparent url("../../images/orderbutton/bg_button_a.gif")/*tpa=http://static.bizwebmedia.net/images/orderbutton/bg_button_a.gif*/ no-repeat scroll top right; text-decoration: none; }
+.order-button-container a.button{ color: #444; display: block; float: right; font: normal 12px arial, sans-serif; height: 24px; margin-right: 6px; padding-right: 12px; }
+.order-button-container a.button span{ background: transparent url("../../images/orderbutton/bg_button_span.gif")/*tpa=http://static.bizwebmedia.net/images/orderbutton/bg_button_span.gif*/ no-repeat; display: block; line-height: 14px; padding: 5px 0 5px 12px; font-weight: bold; font-size: 13px; }
+.order-button-container a.button:active{ background-position: bottom right; color: #000; outline: none; }
+.order-button-container a.button:active span{ background-position: bottom left; padding: 6px 0 4px 12px; }
+.popup-cart{ background-color: #FFFFFF; padding: 4px; overflow: hidden; height: 530px; display: none; }
+
+.fancybox-inner{ background-color: #FFF; }
+
+.NormalRed, .required{ color: #F00; }

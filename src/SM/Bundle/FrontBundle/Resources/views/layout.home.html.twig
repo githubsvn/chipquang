@@ -1,0 +1,1232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>
+            Chip Quang
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8 " />
+        <meta name="description" content="chipquang" />
+        <meta name="keywords" content="" />
+
+        <link rel="canonical" href="#"/>
+        <link type="image/x-icon" rel="shortcut icon" href="#" />
+        <link type="text/css" rel="stylesheet" href="{{ asset('web/front/Sites/25621/Skins/Ecom21/style.css') }}"/>
+        <link type="text/css" rel="stylesheet" href="{{ asset('web/front/Extensions/Stylesheet/common.css') }}"/>
+        <link type="text/css" rel="stylesheet" href="{{ asset('web/js/stickytooltip/stickytooltip.css') }}"/>
+        <style type="text/css">#Header{height:130px;}</style>
+        
+        <script type="text/javascript" src="{{ asset('web/js/jquery-1.7.2.min.js') }}"></script>
+        <script type="text/javascript"> var $j = jQuery.noConflict();</script>
+        <script type="text/javascript" src="{{ asset('web/front/Extensions/Js/common.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('web/front/Extensions/Js/jquery.cookie.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('web/front/Extensions/Js/jquery.tooltip.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('web/js/stickytooltip/stickytooltip.js') }}"></script>
+    </head>
+    <body style="background: #FFFFFF;">
+            <div id="Container">
+                <div id="Outer">
+                    <div id="Header" style="background: url('/web/images/banner.jpg') no-repeat left top;">
+                        <div class="logo fleft">
+                            <a title="" href="#">
+                                <img style="max-width: 325px;" alt="chipquang.com" title="chipquang.com" src="{{ asset('/web/images/logo.png')}}">
+                            </a>
+                        </div>
+						<!--
+                        <div class="topBanner">
+                            <h2 class="topBannerH2">
+                            <span style="color:#ffff00;">TRUNG TÂM KD ĐIỆN MÁY- ĐIỆN TỬ NHẬT TẢO</span></h2>
+                            <p class="topBannerP"> <span style="color:#ffff00;">Đ/C : SẠP A42 - KHU A CAO ỐC A NGUYỄN KIM P7 , Q10 , TPHCM</span></p>
+                            <p class="topBannerP"><span style="color:#ffff00;">Tel : 08.3975.2625 - Fax : 08.3957.2625 - Hotlite : 0906.345.354 Mr .Quang</span></p>
+                            <p class="topBannerP"><span style="color:#ffff00;">http://www.chipdientu.com.vn&nbsp; - www.chipquang.com - Email : kimquang1610@gmail.com</span></p>
+                        </div>
+      -->
+                        <div class="fright" style="overflow: hidden;padding-right: 5px;">
+                            <p class="language">
+                            <a title="Vietnam" href="http://www.chipquang.com/home/lang/vn.html">
+                                <img src="{{ asset('/web/images/flag_vn.jpg') }}" style="float:left;margin-right: 5px;"></a>
+                            <a title="English" href="http://www.chipquang.com/home/lang/en.html">
+                                <img src="{{ asset('/web/images/flag_en.jpg') }}" style="float:left;margin-right: 5px;"></a>                    
+                            </p>
+                        </div>
+                    </div>
+                    <div id="Menu">
+
+                        <div style="display: none;">
+                            <div id="inline1" class="popup-cart"></div>
+                            <a class="ProductAddButton" href="#inline1">Popup Cart</a>
+                        </div>
+                        <div id="menu-container">
+                            <ul id="nav">
+
+                                <li id="nav-1" class="level0 nav-1 first current parent"
+                                    onmouseover="toggleMenu(1, -1, 1)" 
+                                    onmouseout="toggleMenu(1, -1, 0)">
+                                    <a href="index.htm" >
+                                        <span>Trang chủ</span>
+                                    </a>
+                                    <ul class="level0">
+
+                                    </ul>
+                                </li>
+
+                                <li id="nav-2" class="level0 nav-2 parent"
+                                    onmouseover="toggleMenu(2, -1, 1)" 
+                                    onmouseout="toggleMenu(2, -1, 0)">
+                                    <a href="#" >
+                                        <span>Giới thiệu</span>
+                                    </a>
+                                    <ul class="level0">
+
+                                    </ul>
+                                </li>
+
+                                <li id="nav-3" class="level0 nav-3 parent"
+                                    onmouseover="toggleMenu(3, -1, 1)" 
+                                    onmouseout="toggleMenu(3, -1, 0)">
+                                    <a href="#" >
+                                        <span>Sản phẩm</span>
+                                    </a>
+                                    <ul class="level0">
+
+                                    </ul>
+                                </li>
+
+                                <li id="nav-4" class="level0 nav-4 parent"
+                                    onmouseover="toggleMenu(4, -1, 1)" 
+                                    onmouseout="toggleMenu(4, -1, 0)">
+                                    <a href="#" >
+                                        <span>Tin tức</span>
+                                    </a>
+                                    <ul class="level0">
+                                    </ul>
+                                </li>
+                                <li id="nav-5" class="level0 nav-5 parent"
+                                    onmouseover="toggleMenu(5, -1, 1)" 
+                                    onmouseout="toggleMenu(5, -1, 0)">
+                                    <a href="#" >
+                                        <span>Download</span>
+                                    </a>
+                                    <ul class="level0">
+
+                                    </ul>
+                                </li>
+                                <li id="nav-6" class="level0 nav-6 parent"
+                                    onmouseover="toggleMenu(6, -1, 1)" 
+                                    onmouseout="toggleMenu(6, -1, 0)">
+                                    <a href="#">
+                                        <span>Liên hệ</span>
+                                    </a>
+                                    <ul class="level0">
+                                    </ul>
+                                </li>
+                                <li id="nav-7" class="level0 nav-7 parent"
+                                    onmouseover="toggleMenu(7, -1, 1)" 
+                                    onmouseout="toggleMenu(7, -1, 0)">
+                                    <a href="#">
+                                        <span>Đặt hàng</span>
+                                    </a>
+                                    <ul class="level0">
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div id="SearchForm">
+                            <script type="text/javascript">
+                                function OnSearchClick() { var content = document.getElementById('ctlSearch_txtSearch').value; if (content == "") return false; return true; }
+                            </script>
+                            <div id="SearchFormContainer">
+                                <input name="ctl00$ctlSearch$txtSearch" type="text" id="ctlSearch_txtSearch" class="search-input" onkeydown="" />
+                                <input type="submit" name="ctl00$ctlSearch$btnSearch" value="" onclick="javascript:return OnSearchClick();" id="ctlSearch_btnSearch" class="search-button" />
+                                <a href="search.html-action=advance.htm" class="search-adv" title="Tìm kiếm nâng cao">
+                                    <span>+</span>
+                                </a>
+                            </div>
+                        </div>
+                        <br class="Clear" />
+                    </div>
+                    <div id="Wrapper">
+                        <div id="cphMain_Content">
+                            <div id="cphMain_ctl00_LeftPane" class="left">
+                                <div id="cate-menu" class="DefaultModule cate-menu">
+                                    <div class="defaultTitle cate-menu-title">
+                                        <span>Danh Mục Linh Kiện</span>
+                                    </div>
+                                <div class="defaultContent cate-menu-content">
+                                        <ul>
+                                            <li class="level0 level0-3968"><a href="#">
+                                                <span>RF Remote & Receiver</span></a>
+                                                    <ul style="display: block;">
+                                                        <li class="level1 level1-4168 first"><a href="#">
+                                                            <span>Atmel</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>MICROCHIP</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>STC</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                            
+                                            <li class="level0 level0-3968"><a href="#">
+                                                <span>Microchip Microcontroller</span></a>
+                                                    <ul style="display: block;">
+                                                        <li class="level1 level1-4168 first"><a href="#">
+                                                            <span>Atmel</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>MICROCHIP</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>STC</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                            
+                                            <li class="level0 level0-3968"><a href="#">
+                                                <span>Character LCDs</span></a>
+                                                    <ul style="display: block;">
+                                                        <li class="level1 level1-4168 first"><a href="#">
+                                                            <span>Atmel</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>MICROCHIP</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>STC</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                            
+                                            <li class="level0 level0-3968"><a href="#">
+                                                <span>Graphic LCDs</span></a>
+                                                    <ul style="display: block;">
+                                                        <li class="level1 level1-4168 first"><a href="#">
+                                                            <span>Atmel</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>MICROCHIP</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>STC</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                            <li class="level0 level0-3968"><a href="#">
+                                                <span>ATMEL Microcontroller</span></a>
+                                                    <ul style="display: block;">
+                                                        <li class="level1 level1-4168 first"><a href="#">
+                                                            <span>Atmel</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>MICROCHIP</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                        <li class="level1 level1-4169"><a href="#">
+                                                            <span>STC</span></a>
+                                                            <ul style="display: block;">
+                                                            </ul>
+                                                        </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>                                    
+                                    <div class="defaultFooter cate-menu-footer"><div></div></div>
+                                    <br />
+                                </div>
+
+                                <span style="display: none;"></span>
+                                
+                                <div id="TextHTML-Module" class="DefaultModule">
+                                        <div class="DefaultModule" id="TextHTML-Module">
+                                            <div class="defaultTitle TextHTML-Title"><span>Hỗ trợ trực tuyến</span></div>
+                                            <div class="defaultContent TextHTML-content">
+                                                <table border="0" cellpadding="0" cellspacing="3" style="width: 190px; height: 50px">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="center" align="center" height="25">
+                                                                <div align="center"><a href="ymsgr:sendIM?minhthienvt">
+                                                                        <img style="border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: initial; border-left-width: 0px; border-left-style: solid; border-left-color: initial; border-top-width: 0px; border-top-style: solid; border-top-color: initial; border-right-width: 0px; border-right-style: solid; border-right-color: initial; width: 125px; height: 25px; " src="http://mail.opi.yahoo.com/online?u=minhthienvt&amp;m=g&amp;t=2" alt="Hỗ trợ kỹ thuật"> </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="bottom" align="center" height="15">
+                                                            <div align="center"><a style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; color: rgb(2,92,148); text-decoration: none; padding-top: 0px" href="skype:minhthienvt?call"><img align="bottom" style="border-bottom: medium none; border-left: medium none; padding-bottom: 0px; margin: 0px; padding-left: 0px; width: 119px; padding-right: 0px; height: 49px; border-top: medium none; border-right: medium none; padding-top: 0px" src="http://download.skype.com/errors/i/images/logos/skype_logo.png" alt="Hỗ trợ trực tuyến (Skype)"></a></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div align="center"><a style="padding-bottom: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; color: rgb(2,92,148); text-decoration: none; padding-top: 0px" href="#"><img align="bottom" style="border-bottom: medium none; border-left: medium none; padding-bottom: 0px; margin: 0px; padding-left: 0px; width: 119px; padding-right: 0px; height: 49px; border-top: medium none; border-right: medium none; padding-top: 0px" src="{{ asset('web/images/facebook.jpg')}}" alt="Facebook"></a></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div style="clear: both; padding: 3px 0px 0px 0px;">
+                                                                        <img align="bottom" src="{{ asset('web/images/hotline.jpg') }}" alt="Hotline">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <p> </p>
+                                            </div>
+
+                                            <div class="clear defaultFooter TextHTML-footer">
+                                                <div> </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                
+                                <div id="useronline" class="DefaultModule">
+                                    <div class="defaultTitle useronline-title">
+                                        <span>
+                                            Lượt truy cập</span></div>
+                                    <div class="defaultContent useronline-content">
+                                        <div id="ViewStats">
+                                            <table class="UserOnlineTable">
+                                                <tbody>
+                                                    <tr id="showOnlineTotal">
+                                                        <td class="showIconVisitor"></td>
+                                                        <td width="50px;"><span class="UserOnlineLabel">Tất cả: </span></td>
+                                                        <td><span class="UserOnlineValue" style="font-weight:bold;">14665</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="defaultFooter useronline-footer">
+                                        <div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="width:783px; float:left;">
+                                <div id="cphMain_ctl00_ContentrightPane" class="center_right"></div>
+                                <div id="cphMain_ctl00_ContentPane" class="center">
+                                    <div class="hidden" id="productReviewPopup"></div>
+                                    <script type="text/javascript">
+                                    $j(function () {
+                                        $j(".ProductList .ProductImageTooltip a").each(function () {
+                                            var productname = $j(this).attr("productname");
+                                            var thumbnail = $j(this).attr("thumbnail");
+                                            var description = $j(this).attr("description");
+                                            var promotion = $j(this).attr("promotion");
+                                            $j(this).bind("mouseover", function () {
+                                                var promotionHtml = '';
+                                                if (promotion != '') promotionHtml = '<div class="promotion-description">' + promotion + '</div>';
+                                                var returnHtml =
+                                                '<div class="tooltip_name">' + productname + '</div>' +
+                                                '<div class="tooltip_picture"><img src="' + thumbnail + '" title="' + productname + '" alt="' + productname + '" /></div>' +
+                                                '<div class="tooltip_description">' + description + '</div>' + promotionHtml +
+                                                '<div class="teaser"></div>';
+                                                $j("#productReviewPopup").html(returnHtml);
+                                            });
+                                            $j(this).tooltip({ track: true, delay: 0, showURL: false, bodyHandler: function () { return $j("#productReviewPopup").html(); } });
+                                        });
+                                    });
+                                </script>
+                                    <div id="HomeFeaturedProducts" class="Block FeaturedProducts DefaultModule">
+                                        <div class="defaultTitle TitleContent">
+                                            <span>Sản phẩm mới</span>
+                                        </div>
+                                        <div class="defaultContent BlockContent">
+                                            <ul class="ProductList First">
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip">
+                                                        <a href="#"
+                                                           productname="TG240A"
+                                                           thumbnail="{{ asset('web/images/pro-tg240aTG240A.jpg') }}"
+                                                           description="TG240A"
+                                                           promotion="">
+                                                            <img alt="TG240A" title="TG240A" class="image"
+                                                                 src="{{ asset('web/images/pro-tg240aTG240A.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >TG240A</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span>
+                                                            <span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="TG240A"
+                                                           thumbnail="{{ asset('web/images/pro-tg1223bTG1223B(1).jpg') }}"
+                                                           description="TG240A"
+                                                           promotion="">
+                                                            <img alt="TG240A" title="TG240A" class="image"
+                                                                 src="{{ asset('web/images/pro-tg1223bTG1223B(1).jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >TG240A</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="TG240A"
+                                                           thumbnail="{{ asset('web/images/pro-tc802bTC802B.jpg') }}"
+                                                           description="TG240A"
+                                                           promotion="">
+                                                            <img alt="TG240A" title="TG240A" class="image"
+                                                                 src="{{ asset('web/images/pro-tc802bTC802B.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >TG240A</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="TG240A"
+                                                           thumbnail="{{ asset('web/images/pro-man-hinh-lcdmvTC1602B-01.jpg') }}"
+                                                           description="TG240A"
+                                                           promotion="">
+                                                            <img alt="TG240A" title="TG240A" class="image"
+                                                                 src="{{ asset('web/images/pro-man-hinh-lcdmvTC1602B-01.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >TG240A</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul class="ProductList Last">
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="SSOP28 TO DIP"
+                                                           thumbnail="{{ asset('web/images/SSOP28(2)_lit.jpg') }}"
+                                                           description="SSOP28 TO DIP"
+                                                           promotion="">
+                                                            <img alt="SSOP28 TO DIP28" title="SSOP28 TO DIP28" class="image"
+                                                                 src="{{ asset('web/images/SSOP28(2)_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >SSOP28 TO DIP</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="GY-152"
+                                                           thumbnail="{{ asset('web/images/ch_lit.jpg') }}"
+                                                           description="GY-152"
+                                                           promotion="">
+                                                            <img alt="GY-152" title="GY-152" class="image"
+                                                                 src="{{ asset('web/images/ch_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >GY-152</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="SHT10"
+                                                           thumbnail="{{ asset('web/images/SHT10_lit.jpg') }}"
+                                                           description="SHT10"
+                                                           promotion="">
+                                                            <img alt="SHT10" title="SHT10" class="image"
+                                                                 src="{{ asset('web/images/SHT10_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >SHT10</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="74LV125PW"
+                                                           thumbnail="{{ asset('web/images/14-TSSOP_sml_lit.jpg') }}"
+                                                           description="74LV125PW"
+                                                           promotion="">
+                                                            <img alt="74LV125PW" title="74LV125PW" class="image"
+                                                                 src="{{ asset('web/images/14-TSSOP_sml_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >74LV125PW</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                            </ul>
+                                            
+                                            
+                                            
+                                            <ul class="ProductList Last">
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="PIC18F4550"
+                                                           thumbnail="{{ asset('web/images/4550_lit.jpg') }}"
+                                                           description="PIC18F4550"
+                                                           promotion="">
+                                                            <img alt="PIC18F4550" title="PIC18F4550" class="image"
+                                                                 src="{{ asset('web/images/4550_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >PIC18F4550</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="ATMega8535"
+                                                           thumbnail="{{ asset('web/images/8535s_lit.jpg') }}"
+                                                           description="ATMega8535"
+                                                           promotion="">
+                                                            <img alt="ATMega8535" title="ATMega8535" class="image"
+                                                                 src="{{ asset('web/images/8535s_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >ATMega8535</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="STM32F103RDT6"
+                                                           thumbnail="{{ asset('web/images/103rdt6_lit.jpg') }}"
+                                                           description="STM32F103RDT6"
+                                                           promotion="">
+                                                            <img alt="STM32F103RDT6" title="STM32F103RDT6" class="image"
+                                                                 src="{{ asset('web/images/103rdt6_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >STM32F103RDT6</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="STM8S"
+                                                           thumbnail="{{ asset('web/images/STMicroelectronics-STM8S-DISCOVERY_lit.jpg') }}"
+                                                           description="STM8S"
+                                                           promotion="">
+                                                            <img alt="STM8S" title="STM8S" class="image"
+                                                                 src="{{ asset('web/images/STMicroelectronics-STM8S-DISCOVERY_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >STM8S</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                            </ul>
+                                            
+                                            <div class="ViewMore">
+                                                <a href="#">Xem thêm</a>
+                                            </div>
+                                            <div class="Clear"></div>
+                                        </div>
+                                        
+                                        <div class="defaultFooter FooterContent">
+                                            <div></div>
+                                        </div>
+                                        <div class="Clear"></div>
+                                    </div>
+                                    
+                                    <div id="HomeFeaturedProducts" class="Block FeaturedProducts DefaultModule">
+                                        <div class="defaultTitle TitleContent">
+                                            <span>Sản phẩm nổi bật</span>
+                                        </div>
+                                        <div class="defaultContent BlockContent">
+                                            <ul class="ProductList First">
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip">
+                                                        <a href="#"
+                                                           productname="TG240A"
+                                                           thumbnail="{{ asset('web/images/pro-tg240aTG240A.jpg') }}"
+                                                           description="TG240A"
+                                                           promotion="">
+                                                            <img alt="TG240A" title="TG240A" class="image"
+                                                                 src="{{ asset('web/images/pro-tg240aTG240A.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >TG240A</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span>
+                                                            <span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="TG240A"
+                                                           thumbnail="{{ asset('web/images/pro-tg1223bTG1223B(1).jpg') }}"
+                                                           description="TG240A"
+                                                           promotion="">
+                                                            <img alt="TG240A" title="TG240A" class="image"
+                                                                 src="{{ asset('web/images/pro-tg1223bTG1223B(1).jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >TG240A</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="TG240A"
+                                                           thumbnail="{{ asset('web/images/pro-tc802bTC802B.jpg') }}"
+                                                           description="TG240A"
+                                                           promotion="">
+                                                            <img alt="TG240A" title="TG240A" class="image"
+                                                                 src="{{ asset('web/images/pro-tc802bTC802B.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >TG240A</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="TG240A"
+                                                           thumbnail="{{ asset('web/images/pro-man-hinh-lcdmvTC1602B-01.jpg') }}"
+                                                           description="TG240A"
+                                                           promotion="">
+                                                            <img alt="TG240A" title="TG240A" class="image"
+                                                                 src="{{ asset('web/images/pro-man-hinh-lcdmvTC1602B-01.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >TG240A</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul class="ProductList Last">
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="SSOP28 TO DIP"
+                                                           thumbnail="{{ asset('web/images/SSOP28(2)_lit.jpg') }}"
+                                                           description="SSOP28 TO DIP"
+                                                           promotion="">
+                                                            <img alt="SSOP28 TO DIP28" title="SSOP28 TO DIP28" class="image"
+                                                                 src="{{ asset('web/images/SSOP28(2)_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >SSOP28 TO DIP</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="GY-152"
+                                                           thumbnail="{{ asset('web/images/ch_lit.jpg') }}"
+                                                           description="GY-152"
+                                                           promotion="">
+                                                            <img alt="GY-152" title="GY-152" class="image"
+                                                                 src="{{ asset('web/images/ch_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >GY-152</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="SHT10"
+                                                           thumbnail="{{ asset('web/images/SHT10_lit.jpg') }}"
+                                                           description="SHT10"
+                                                           promotion="">
+                                                            <img alt="SHT10" title="SHT10" class="image"
+                                                                 src="{{ asset('web/images/SHT10_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >SHT10</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="74LV125PW"
+                                                           thumbnail="{{ asset('web/images/14-TSSOP_sml_lit.jpg') }}"
+                                                           description="74LV125PW"
+                                                           promotion="">
+                                                            <img alt="74LV125PW" title="74LV125PW" class="image"
+                                                                 src="{{ asset('web/images/14-TSSOP_sml_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >74LV125PW</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                            </ul>
+                                            
+                                            <ul class="ProductList Last">
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="PIC18F4550"
+                                                           thumbnail="{{ asset('web/images/4550_lit.jpg') }}"
+                                                           description="PIC18F4550"
+                                                           promotion="">
+                                                            <img alt="PIC18F4550" title="PIC18F4550" class="image"
+                                                                 src="{{ asset('web/images/4550_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >PIC18F4550</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="ATMega8535"
+                                                           thumbnail="{{ asset('web/images/8535s_lit.jpg') }}"
+                                                           description="ATMega8535"
+                                                           promotion="">
+                                                            <img alt="ATMega8535" title="ATMega8535" class="image"
+                                                                 src="{{ asset('web/images/8535s_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >ATMega8535</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                                <li class="Odd">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="STM32F103RDT6"
+                                                           thumbnail="{{ asset('web/images/103rdt6_lit.jpg') }}"
+                                                           description="STM32F103RDT6"
+                                                           promotion="">
+                                                            <img alt="STM32F103RDT6" title="STM32F103RDT6" class="image"
+                                                                 src="{{ asset('web/images/103rdt6_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >STM32F103RDT6</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    Liên hệ</em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="Even">
+                                                    <div id="ProductImage" class="ProductImage ProductImageTooltip po_479761">
+                                                        <a href="#"
+                                                           productname="STM8S"
+                                                           thumbnail="{{ asset('web/images/STMicroelectronics-STM8S-DISCOVERY_lit.jpg') }}"
+                                                           description="STM8S"
+                                                           promotion="">
+                                                            <img alt="STM8S" title="STM8S" class="image"
+                                                                 src="{{ asset('web/images/STMicroelectronics-STM8S-DISCOVERY_lit.jpg') }}"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="saleFlag iconSprite disable">
+                                                    </div>
+                                                    <div class="ProductDetails">
+                                                        <strong><a href="#" >STM8S</a></strong>
+                                                    </div>
+                                                    <div class="ProductPrice">
+                                                        <div class="retail-price disable">
+                                                            <span class="price-label"></span><span class="price"><strike class="RetailPriceValue">
+                                                                </strike>
+                                                            </span>
+                                                        </div>
+                                                        <div class="special-price">
+                                                            <span class="price-label"></span><span class="price"><em>
+                                                                    <font color="red">150,000 VNĐ</font></em>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                            </ul>
+                                            
+                                            <div class="ViewMore">
+                                                <a href="#">Xem thêm</a>
+                                            </div>
+                                            <div class="Clear"></div>
+                                        </div>
+                                        
+                                        <div class="defaultFooter FooterContent">
+                                            <div></div>
+                                        </div>
+                                        <div class="Clear"></div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                <div id="cphMain_ctl00_RightPane" class="right">
+                                    <div class="DefaultModule" id="TextHTML-Module">
+                                        <div class="defaultTitle TextHTML-Title"><span>Tin tức</span></div>
+                                        <div class="defaultContent TextHTML-content">
+                                            <div id="ctl00_cph_Main_ctl00_ctl08_ContentPane" class="timkiemContent">
+                                                <div id="ctl00_cph_Main_ctl00_ctl08_ctl00_HtmlHolder">
+                                                    <div id="ctl00_cph_Main_ctl00_ctl08_ctl00_ctl00_HtmlContent">
+                                                        <div class="newsLastest_Item">
+                                                            <div class="newsLastest_Image">
+                                                                <a href="#">
+                                                                    <img title="Smartphone Full HD" alt="Smartphone Full HD" src="{{ asset('web/images/2013618114950331.60.60.jpg') }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="newsLastest_Title">
+                                                                <a href="#"><span>Smartphone Full HD</span></a>
+                                                            </div>
+                                                            <div class="Clear"></div>
+                                                        </div>
+                                                        <div class="newsLastest_Item">
+                                                            <div class="newsLastest_Image">
+                                                                <a href="#">
+                                                                    <img title="Smartphone Full HD" alt="Smartphone Full HD" src="{{ asset('web/images/2013618115740376.60.60.jpg') }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="newsLastest_Title">
+                                                                <a href="#"><span>Điện thoại độc nhất vô nhị ở VN</span></a>
+                                                            </div>
+                                                            <div class="Clear"></div>
+                                                        </div>
+                                                        <div class="newsLastest_Item">
+                                                            <div class="newsLastest_Image">
+                                                                <a href="#">
+                                                                    <img title="Smartphone Full HD" alt="Smartphone Full HD" src="{{ asset('web/images/201371710255821.60.60.jpg') }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="newsLastest_Title">
+                                                                <a href="#"><span>Câu chuyện thành công của McDonald's</span></a>
+                                                            </div>
+                                                            <div class="Clear"></div>
+                                                        </div>
+                                                        <div class="newsLastest_Item">
+                                                            <div class="newsLastest_Image">
+                                                                <a href="#">
+                                                                    <img title="Smartphone Full HD" alt="Smartphone Full HD" src="{{ asset('web/images/2013618113856176.60.60.jpg') }}">
+                                                                </a>
+                                                            </div>
+                                                            <div class="newsLastest_Title">
+                                                                <a href="#"><span>Công nghệ đèn LED</span></a>
+                                                            </div>
+                                                            <div class="Clear"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clear defaultFooter TextHTML-footer">
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="DefaultModule" id="TextHTML-Module">
+                                        <div class="defaultTitle TextHTML-Title"><span>Đối Tác</span></div>
+                                        <div class="defaultContent TextHTML-content">
+                                            <marquee height="570" scrolldelay="10" scrollamount="2" onmouseover="this.stop()" onmouseout="this.start()" direction="UP">
+                                                <div id="ctl00_cph_Main_ctl00_ctl08_ContentPane" class="timkiemContent">
+                                                    <div id="ctl00_cph_Main_ctl00_ctl08_ctl00_HtmlHolder">
+                                                        <div id="ctl00_cph_Main_ctl00_ctl08_ctl00_ctl00_HtmlContent">
+                                                            <p><img width="165px;" src="{{ asset('web/images/logo_nganlong.png') }}"></img></p>
+                                                            <p><img width="165px;" src="{{ asset('web/images/logo.png') }}"></img></p>
+                                                            <p><img width="165px;" src="{{ asset('web/images/logo_intel.jpg') }}"></img></p>
+                                                            <p><img width="165px;" src="{{ asset('web/images/logo.png') }}"></img></p>
+                                                            <p><img width="165px;" src="{{ asset('web/images/logo_nganlong.png') }}"></img></p>
+                                                            <p><img width="165px;" src="{{ asset('web/images/logo_intel.jpg') }}"></img></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </marquee>
+                                        </div>
+                                        <div class="clear defaultFooter TextHTML-footer">
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div id="cphMain_ctl00_BottomPane" class="bottom"></div></div>
+                    </div>
+                    <br class="Clear" />
+                    <div id="Footer">
+                        <div id="FooterContainer">
+                            <p>TRUNG TÂM KD ĐIỆN MÁY- ĐIỆN TỬ NHẬT TẢO<br/>
+                                Địa chỉ : SẠP A42, KHU A CAO ỐC A, NGUYỄN KIM P.7, Q.10, TPHCM<br/>
+                                Email : kimquang1610@gmail.com&nbsp; -&nbsp; 
+                                Website : <a href="http://www.chipdientu.com.vn"><font color="#2C86BD" style="font-weight: bold;">www.chipdientu.com.vn</font></a>   - 
+                                <a href="http://www.chipquang.com"><font color="#2C86BD" style="font-weight: bold;">www.chipquang.com</font></a>
+                            </p>
+                        </div>
+                        <div class="Clear"></div>
+                    </div>
+                    <br class="Clear" />
+                </div>
+            </div>
+    </body>
+</html>

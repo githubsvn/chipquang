@@ -1,3 +1,7 @@
+sm_front:
+    resource: "@SMFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
 mtx_acl:
   resource: "@SMAclBundle/Resources/config/routing.yml"
   prefix:   /
