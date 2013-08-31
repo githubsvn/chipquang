@@ -519,4 +519,27 @@ class Products
     {
         return $this->media_id;
     }
+
+    /**
+     * Set hot
+     *
+     * @param boolean $hot
+     * @return Products
+     */
+    public function setHot($hot)
+    {
+        $this->hot = $hot;
+    
+        return $this;
+    }
+
+    /**
+     * Get hot
+     *
+     * @return boolean 
+     */
+    public function getHot()
+    {
+        return $this->hot;
+    }
 }

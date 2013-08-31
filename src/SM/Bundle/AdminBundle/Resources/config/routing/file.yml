@@ -1,0 +1,43 @@
+admin_file:
+    pattern:  /{page}/{lang}
+    defaults: { _controller: "SMAdminBundle:File:index", page : 1, lang : null }
+    requirements:
+        page:  \d+
+        lang:  \d+
+        
+admin_file_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SMAdminBundle:File:show" }
+
+admin_file_new:
+    pattern:  /new
+    defaults: { _controller: "SMAdminBundle:File:new" }
+
+admin_file_create:
+    pattern:  /create
+    defaults: { _controller: "SMAdminBundle:File:create" }
+    requirements: { _method: post }
+
+admin_file_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SMAdminBundle:File:edit" }
+
+admin_file_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SMAdminBundle:File:update" }
+    requirements: { _method: post }
+
+admin_file_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SMAdminBundle:File:delete" }
+    requirements: { _method: post|get }
+
+admin_file_delete_all:
+    pattern:  /deleteall
+    defaults: { _controller: "SMAdminBundle:File:deleteAll" }
+    requirements: { _method: post }
+    
+admin_file_download:
+    pattern:  /{id}/download
+    defaults: { _controller: "SMAdminBundle:File:download" }
+    requirements: { _method: get }    

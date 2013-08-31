@@ -55,4 +55,22 @@ class File
             }
         }
     }
+    
+    /**
+     * Delete file
+     */
+    public static function deleteFiles($fileName = '')
+    {
+        if (!empty($fileName)) {
+            $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
+            $dirRoot = Utilities::getRootDir();
+            
+            $uploadPath = $dirRoot . $container->getParameter('fileUpload') ;
+            
+            $fileName = $uploadPath . $fileName;
+            if (file_exists($fileName)) {
+                @unlink($fileName);
+            }
+        }
+    }
 }

@@ -3,23 +3,22 @@
 namespace SM\Bundle\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use SM\Bundle\AdminBundle\Entity\Page;
-use SM\Bundle\AdminBundle\Form\PageType;
+use SM\Bundle\AdminBundle\Entity\File;
+use SM\Bundle\AdminBundle\Form\FileType;
 use SM\Bundle\AdminBundle\Utilities\Helper;
 use SM\Bundle\AdminBundle\Utilities\Utilities;
 
 
 /**
- * Page controller.
+ * File controller.
  *
  */
-class PageController extends Controller
+class FileController extends Controller
 {
     private $uploadDir;
-    private $thumbDir;
     private $uploadPath;
-    private $thumbPath;
     
     /**
      * 
@@ -27,10 +26,8 @@ class PageController extends Controller
     public function __construct() {
         $container = \SM\Bundle\AdminBundle\SMAdminBundle::getContainer();
         $dirRoot = Utilities::getRootDir();
-        $this->uploadDir = $dirRoot . $container->getParameter('upload');
-        $this->thumbDir = $dirRoot . $container->getParameter('thumbUpload');
-        $this->uploadPath = $container->getParameter('thumbUpload');
-        $this->thumbPath = $container->getParameter('thumbUpload');
+        $this->uploadDir = $dirRoot . $container->getParameter('fileUpload');
+        $this->uploadPath = $container->getParameter('fileUpload');
     }
     
     /**
@@ -67,7 +64,7 @@ class PageController extends Controller
                 ->find($lang);
 
         $total = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:PageLanguage")
+                ->getRepository("SMAdminBundle:FileLanguage")
                 ->getTotalByLangAndName($lang, $name);
 
         $perPage = $this->container->getParameter('per_item_page');
@@ -76,10 +73,10 @@ class PageController extends Controller
         $nextPage = $page < $lastPage ? $page + 1 : $lastPage;
 
         $entities = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:PageLanguage")
+                ->getRepository("SMAdminBundle:FileLanguage")
                 ->findByLangAndName($lang, $name, $perPage, ($page - 1) * $perPage);
 
-        return $this->render('SMAdminBundle:Page:index.html.twig', array(
+        return $this->render('SMAdminBundle:File:index.html.twig', array(
             'entities' => $entities,
             'lastPage' => $lastPage,
             'previousPage' => $previousPage,
@@ -100,7 +97,7 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SMAdminBundle:Page')->find($id);
+        $entity = $em->getRepository('SMAdminBundle:File')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Products entity.');
@@ -108,7 +105,7 @@ class PageController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SMAdminBundle:Page:show.html.twig', array(
+        return $this->render('SMAdminBundle:File:show.html.twig', array(
                     'entity' => $entity,
                     'delete_form' => $deleteForm->createView(),));
     }
@@ -119,7 +116,7 @@ class PageController extends Controller
      */
     public function newAction()
     {
-        $entity = new Page();
+        $entity = new File();
         //get list language
         $repLanguage = $this->getDoctrine()
                 ->getRepository("SMAdminBundle:Language");
@@ -128,10 +125,10 @@ class PageController extends Controller
 
         if (is_array($langList)) {
             foreach ($langList as $language) {
-                $oLanguage = new \SM\Bundle\AdminBundle\Entity\PageLanguage();
+                $oLanguage = new \SM\Bundle\AdminBundle\Entity\FileLanguage();
                 $oLanguage->setLanguage($language);
-                $oLanguage->setPage($entity);
-                $entity->addPageLanguage($oLanguage);
+                $oLanguage->setFile($entity);
+                $entity->addFileLanguage($oLanguage);
 
                 if ($language->getIsDefault()) {
                     $defaultLanguage = $language;
@@ -145,7 +142,7 @@ class PageController extends Controller
             $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
         }
 
-        $form = $this->createForm(new PageType(), $entity);
+        $form = $this->createForm(new FileType(), $entity);
 
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
@@ -159,24 +156,22 @@ class PageController extends Controller
 
                 $entityManager = $this->getDoctrine()->getEntityManager();
                 $entityManager->persist($entity);
-                foreach ($entity->getPageLanguages() as $oLanguage) {
+                foreach ($entity->getFileLanguages() as $oLanguage) {
                     $name = $oLanguage->getName();
 
                     if (empty($name)) {
-                        $entity->removePageLanguage($oLanguage);
+                        $entity->removeFileLanguage($oLanguage);
                         $entityManager->remove($oLanguage);
                     }
                 }
 
                 //Upload logo for company
-                if (!empty($entity->image)) {
-                    $newName = Utilities::renameForFile($entity->image->getClientOriginalName());
+                if (!empty($entity->file)) {
+                    $newName = Utilities::renameForFile($entity->file->getClientOriginalName());
                     //upload file
-                    $entity->image->move($this->uploadDir, $newName);
+                    $entity->file->move($this->uploadDir, $newName);
                     //set new name
-                    $entity->setImage($newName);
-                    //Create thumbnail for image
-                    Helper::createThumb($newName);
+                    $entity->setFile($newName);
                 }
 
                 $entityManager->flush();
@@ -190,7 +185,7 @@ class PageController extends Controller
 
                 if (!$referrer) {
                     return $this->redirect(
-                        $this->generateUrl('admin_page')
+                        $this->generateUrl('admin_file')
                     );
                 } else {
                     return $this->redirect($referrer);
@@ -203,43 +198,11 @@ class PageController extends Controller
             }
         }
 
-        //get Medias
-        $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
-                ->findAll();
-
-        //Get media category name that to display add news
-        $langList = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:Language")
-                ->findAll();
-        foreach ($langList as $langData) {
-            $isDefault = $langData->getIsDefault();
-            if ($isDefault == 1) {
-                $lang = $langData->getId();
-                break;
-            }
-        }
-        $currentLanguage = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:Language")
-                ->find($lang);
-        $criteria = array();
-        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
-        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
-        $listMediaCats = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList(null, null, $criteria, array('lft' => 'ASC'));
-        foreach ($listMediaCats as $theCat) {
-            $theCat->setLanguage($currentLanguage);
-        }
-
-        return $this->render('SMAdminBundle:Page:new.html.twig', array(
+        return $this->render('SMAdminBundle:File:new.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
-            'optMedias' => $optMedias,
-            'selectedMedias' => array(),
-            'mediaPath' => $this->thumbPath,
-            'optMediaTypes' => $listMediaCats
         ));
     }
 
@@ -249,7 +212,7 @@ class PageController extends Controller
      */
     public function editAction($id)
     {
-        $entity = $this->getDoctrine()->getRepository("SMAdminBundle:Page")
+        $entity = $this->getDoctrine()->getRepository("SMAdminBundle:File")
                 ->find($id);
 
         if (!$entity) {
@@ -259,7 +222,7 @@ class PageController extends Controller
                      ->getFlashBag()
                      ->add('sm_flash_error', $this->get('translator')->trans('Unable to find entity'));
 
-            return $this->redirect($this->generateUrl('admin_page'));
+            return $this->redirect($this->generateUrl('admin_file'));
         }
 
         //get list language
@@ -271,11 +234,11 @@ class PageController extends Controller
         if (is_array($langList)) {
             foreach ($langList as $language) {
                 if (!$entity->hasLanguage($language)) {
-                    $oLanguage = new \SM\Bundle\AdminBundle\Entity\PageLanguage();
+                    $oLanguage = new \SM\Bundle\AdminBundle\Entity\FileLanguage();
                     $oLanguage->setLanguage($language);
-                    $oLanguage->setPage($entity);
+                    $oLanguage->setFile($entity);
 
-                    $entity->addPageLanguage($oLanguage);
+                    $entity->addFileLanguage($oLanguage);
                 }
                 if ($language->getIsDefault()) {
                     $defaultLanguage = $language;
@@ -289,8 +252,8 @@ class PageController extends Controller
             $session->set('referrer', $this->getRequest()->server->get('HTTP_REFERER'));
         }
 
-        $image = $entity->getImage();
-        $form = $this->createForm(new PageType(), $entity);
+        $file = $entity->getFile();
+        $form = $this->createForm(new FileType(), $entity);
 
         if ($this->getRequest()->isMethod('POST')) {
             $form->bind($this->getRequest());
@@ -303,51 +266,41 @@ class PageController extends Controller
 
                 $entityManager = $this->getDoctrine()->getEntityManager();
                 $entityManager->persist($entity);
-                foreach ($entity->getPageLanguages() as $oLanguage) {
+                foreach ($entity->getFileLanguages() as $oLanguage) {
                     $name = $oLanguage->getName();
 
                     if (empty($name)) {
-                        $entity->removePageLanguage($oLanguage);
+                        $entity->removeFileLanguage($oLanguage);
                         $entityManager->remove($oLanguage);
                     }
                 }
 
                 //Upload logo for company
-                if (!empty($entity->image)) {
-                    $newName = Utilities::renameForFile($entity->image->getClientOriginalName());
+                if (!empty($entity->file)) {
+                    $newName = Utilities::renameForFile($entity->file->getClientOriginalName());
                     //upload file
-                    $entity->image->move($this->uploadDir, $newName);
+                    $entity->file->move($this->uploadDir, $newName);
                     //set new name
-                    $entity->setImage($newName);
-                    //Create thumbnail for image
-                    Helper::createThumb($newName);
+                    $entity->setFile($newName);
 
                     //Delete old logo file
-                    $oldFileImage = $this->uploadDir . '/' . $image;
-                    $oldThumbFileImage = $this->thumbDir . $image;
-                    if (file_exists($oldFileImage)) {
-                        @unlink($oldFileImage);
-                    }
-                    if (file_exists($oldThumbFileImage)) {
-                        @unlink($oldThumbFileImage);
+                    $oldFile = $this->uploadDir . '/' . $file;
+                    if (file_exists($oldFile)) {
+                        @unlink($oldFile);
                     }
                 } else {
                     //Check input delImgs if exist we need to delete logo of the company
-                    if (!empty($_POST['delImgs'])) {
-                        foreach ($_POST['delImgs'] as $img) {
-                            $fileImage = $this->uploadDir . $img;
-                            $oldThumbFileImage = $this->thumbDir . $img;
-                            if (file_exists($fileImage)) {
-                                @unlink($fileImage);
-                                $entity->setImage('');
-                            }
-                            if (file_exists($oldThumbFileImage)) {
-                                @unlink($oldThumbFileImage);
+                    if (!empty($_POST['delFiles'])) {
+                        foreach ($_POST['delFiles'] as $f) {
+                            $fileName = $this->uploadDir . $f;
+                            if (file_exists($fileName)) {
+                                @unlink($fileName);
+                                $entity->setFile('');
                             }
                         }
                     } else {
                         //we dont'want to remove logo. we need to get old logo
-                        $entity->setImage($image);
+                        $entity->setFile($file);
                     }
                 }
 
@@ -362,7 +315,7 @@ class PageController extends Controller
                 $referrer = $this->getRequest()->getSession()->get('referrer');
                 if (!$referrer) {
                     return $this->redirect(
-                                    $this->generateUrl('admin_page')
+                                    $this->generateUrl('admin_file')
                     );
                 } else {
                     return $this->redirect($referrer);
@@ -375,47 +328,39 @@ class PageController extends Controller
             }
         }
 
-        $optMedias = $this->getDoctrine()->getRepository("SMAdminBundle:Media")
-            ->findAll();
-
-        //Get media category name that to display add news
-        $langList = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:Language")
-                ->findAll();
-        foreach ($langList as $langData) {
-            $isDefault = $langData->getIsDefault();
-            if ($isDefault == 1) {
-                $lang = $langData->getId();
-                break;
-            }
-        }
-        $currentLanguage = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:Language")
-                ->find($lang);
-        $criteria = array();
-        $criteria[] = array('op' => '>', 'fieldName' => 'lft', 'fieldValue' => '1');
-        $criteria[] = array('op' => '=', 'fieldName' => 'status', 'fieldValue' => '1');
-        $listMediaCats = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:MediaCategory")
-                ->getList(null, null, $criteria, array('lft' => 'ASC'));
-        foreach ($listMediaCats as $theCat) {
-            $theCat->setLanguage($currentLanguage);
-        }
-
-        return $this->render('SMAdminBundle:Page:edit.html.twig', array(
+        return $this->render('SMAdminBundle:File:edit.html.twig', array(
             'entity' => $entity,
             'form' => $form->createView(),
             'langList' => $langList,
             'defaultLanguage' => $defaultLanguage,
-            'arrImgs' => array($image),
-            'imgPath' => $this->thumbPath,
-            'optMedias' => $optMedias,
-            'mediaPath' => $this->uploadPath,
-            'optMediaTypes' => $listMediaCats,
+            'uploadPath' => $this->uploadPath,
         ));
 
     }
+    
+    /**
+     * Download file
+     */
+    public function downloadAction($id)
+    {
+        $entity = $this->getDoctrine()
+                        ->getRepository("SMAdminBundle:File")
+                        ->find($id);
+        $uploadDir = $this->uploadDir;
+        $fileName = $entity->getFile();
+        $file = $uploadDir . $fileName;
+        $content = file_get_contents($file);
 
+        $response = new Response();
+        $contentType = Helper::getContentType($fileName);
+        $response->headers->set('Content-Type', $contentType);
+        $response->headers->set('Content-Disposition', 'attachment;filename="'.$fileName);
+
+        $response->setContent($content);
+        return $response;
+
+    }
+    
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request request
      * @param int                                       $id      the id
@@ -425,7 +370,7 @@ class PageController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $rep = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:PageLanguage");
+                ->getRepository("SMAdminBundle:FileLanguage");
 
         $rst = $rep->deleteByIds(array($id));
 
@@ -439,7 +384,7 @@ class PageController extends Controller
                      ->add('sm_flash_success', $this->get('translator')->trans('The operation is success'));
 
             return $this->redirect(
-                $this->generateUrl('admin_page')
+                $this->generateUrl('admin_file')
             );
         } else {
             $this->getRequest()
@@ -461,7 +406,7 @@ class PageController extends Controller
     {
         $id = $request->get('checklist');
         $rep = $this->getDoctrine()
-                ->getRepository("SMAdminBundle:PageLanguage");
+                ->getRepository("SMAdminBundle:FileLanguage");
 
         $rst = $rep->deleteByIds($id);
 
@@ -483,7 +428,7 @@ class PageController extends Controller
         if (!$referrer) {
 
             return $this->redirect(
-                $this->generateUrl('admin_page')
+                $this->generateUrl('admin_file')
             );
         } else {
 

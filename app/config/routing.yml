@@ -75,6 +75,10 @@ mtx_admin_config:
   resource: "@SMAdminBundle/Resources/config/routing/config.yml"
   prefix:   /admin/config
 
+mtx_admin_file:
+  resource: "@SMAdminBundle/Resources/config/routing/file.yml"
+  prefix:   /admin/file
+  
 _imagine:
     resource: .
     type: imagine

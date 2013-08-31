@@ -103,4 +103,39 @@ class Helper
                 );
         }
     }
+    
+    /**
+     * Get content type of the file
+     */
+    public static function getContentType($fileName)
+    {
+        $contentType = '';
+        if (!empty($fileName)) {
+            $arr = explode(".", $fileName);
+            if (!empty($arr[1])) {
+                $type = $arr[1];
+                switch ($type) {
+                    case 'pdf':
+                        $contentType = 'text/pdf';
+                        break;
+                    case 'docx':
+                    case 'doc':
+                        $contentType = 'application/vnd.ms-word';
+                        break;
+                    case 'xls':
+                    case 'xlsx':
+                        $contentType = 'application/vnd.ms-excel';
+                        break;
+                    case 'zip':
+                    case 'rar':
+                    case '7z':
+                        $contentType = 'application/octet-stream';
+                        break;
+                    default:
+                        $contentType = 'text/html';
+                }
+            }
+        }
+        return $contentType;
+    }
 }

@@ -30,7 +30,8 @@ Status: Tình trạng
 Select: Lựa chọn
 Search: Tìm kiếm
 Not set value in this language: Ngôn ngữ này không được thiết lập
-Checked if you want to delete this image : Check vào đây nếu bạn muốn xóa hình này.
+Checked if you want to delete this image: Check vào đây nếu bạn muốn xóa hình này.
+Checked if you want to delete this file: Check vào đây nếu bạn muốn xóa tập tin này.
 Select image: Lựa chọn hình ảnh
 Type of media: Thể loại media
 Select All: Chọn tất cả
@@ -155,6 +156,11 @@ Position: Vị trí
 Page List: Danh Sách Trang Tỉnh
 Page Creation: Thêm Mới Trang Tỉnh
 Page Edit: Chỉnh Sửa Trang Tỉnh
+
+#File
+File List: Danh Sách Tập Tin
+File Creation: Thêm Mới Tập Tin
+File Edit: Chỉnh Sửa Tập Tin
 
 #Config
 Config: Tham Số
