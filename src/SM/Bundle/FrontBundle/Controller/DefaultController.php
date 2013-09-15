@@ -14,11 +14,11 @@ class DefaultController extends Controller {
      * @return type 
      */
     public function indexAction(Request $request) {
-        
 //        $repConfig = $this->getDoctrine()
 //                        ->getRepository('SMAdminBundle:Config');
 //        $repConfig->updateByVisitor();
-        return $this->render('SMFrontBundle:Default:index.html.twig');
+        return $this->render('SMFrontBundle:Default:constructor.html.tiwg');
+        //return $this->render('SMFrontBundle:Default:index.html.twig');
     }
     
     /**

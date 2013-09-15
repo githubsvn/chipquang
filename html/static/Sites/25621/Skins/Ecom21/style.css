@@ -457,7 +457,7 @@ div.rating-hover
 .ProductListContainer .defaultContent{padding:0;}
 .Block
 {
-    font-size: 11px;
+    font-size: 12px;
     font-family: inherit;
     color: #444444;
 }
@@ -2510,7 +2510,7 @@ ul.MyAccount
 	}
 	.ProductList .ProductImage
 	{
-		height:120px;
+		height:110px;
 		line-height:95px;
 		/*display:table-cell;*/
 		overflow:hidden;
@@ -2827,7 +2827,7 @@ ul.MyAccount
 	#ProductDetails .ProductThumb {
 		float: left;
 		text-align: center;
-		height: 268px;
+		/*height: 268px;*/
 		width: 235px;
 		margin-left:10px;
 	}
