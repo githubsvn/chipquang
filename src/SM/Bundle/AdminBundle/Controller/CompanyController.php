@@ -177,17 +177,19 @@ class CompanyController extends Controller
                         $entityManager->remove($companyLanguage);
                     }
                 }
-
+                
                 //Upload logo for company
-                if (!empty($entity->logo)) {
-                    $newName = Utilities::renameForFile($entity->logo->getClientOriginalName());
+                if (!empty($entity->thumb)) {
+                    $newName = Utilities::renameForFile($entity->thumb->getClientOriginalName());
+                    //get upload dir
                     //upload file
-                    $entity->logo->move($this->uploadDir, $newName);
+                    $entity->thumb->move($this->uploadDir, $newName);
                     //set new name
-                    $entity->setLogo($newName);
+                    $entity->setThumb($newName);
+                    //Create thumbnail for image
                     Helper::createThumb($newName);
                 }
-
+                
                 $entityManager->flush();
 
                 $this->getRequest()
@@ -267,7 +269,7 @@ class CompanyController extends Controller
         }
 
         //get upload dir
-        $logo = $entity->getLogo();
+        $thumb = $entity->getThumb();
         $form = $this->createForm(new CompanyType(), $entity);
 
         if ($this->getRequest()->isMethod('POST')) {
@@ -291,17 +293,17 @@ class CompanyController extends Controller
                 }
 
                 //Upload logo for company
-                if (!empty($entity->logo)) {
-                    $newName = Utilities::renameForFile($entity->logo->getClientOriginalName());
+                if (!empty($entity->thumb)) {
+                    $newName = Utilities::renameForFile($entity->thumb->getClientOriginalName());
                     //upload file
-                    $entity->logo->move($this->uploadDir, $newName);
+                    $entity->thumb->move($this->uploadDir, $newName);
                     //set new name
-                    $entity->setLogo($newName);
+                    $entity->setThumb($newName);
                     Helper::createThumb($newName);
                     
                     //Delete old logo file
-                    $oldFileThumb = $this->uploadDir . '/' . $logo;
-                    $oldThumbFileImage = $this->thumbDir . '/' . $logo;
+                    $oldFileThumb = $this->uploadDir . '/' . $thumb;
+                    $oldThumbFileImage = $this->thumbDir . '/' . $thumb;
                     
                     if (file_exists($oldFileThumb)) {
                         @unlink($oldFileThumb);
@@ -329,7 +331,7 @@ class CompanyController extends Controller
                         }
                     } else {
                         //we dont'want to remove logo. we need to get old logo
-                        $entity->setLogo($logo);
+                        $entity->setThumb($thumb);
                     }
                 }
 
@@ -362,7 +364,7 @@ class CompanyController extends Controller
                     'form' => $form->createView(),
                     'langList' => $langList,
                     'defaultLanguage' => $defaultLanguage,
-                    'arrImgs' => array($logo),
+                    'arrImgs' => array($thumb),
                     'imgPath' => $this->thumbPath
                 ));
     }

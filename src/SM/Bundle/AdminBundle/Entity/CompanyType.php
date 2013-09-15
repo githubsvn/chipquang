@@ -276,8 +276,7 @@ class CompanyType {
         return $result;
     }
 
-     public function __toString()
-    {
+    public function __toString() {
         $pageLanguages = $this->companytype_languages->toArray();
         if (is_array($pageLanguages)) {
             if (isset($pageLanguages[0])) {
@@ -286,4 +285,5 @@ class CompanyType {
         }
         return '';
     }
+
 }

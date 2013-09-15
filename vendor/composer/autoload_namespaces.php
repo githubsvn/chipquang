@@ -33,6 +33,6 @@ return array(
     'CG\\' => array($vendorDir . '/jms/cg/src'),
     'Assetic' => array($vendorDir . '/kriswallsmith/assetic/src'),
     '' => array($baseDir . '/src'),
-	'Imagine'   => $vendorDir .'/imagine/Imagine/lib/',
-	'Liip\\ImagineBundle'=>$vendorDir . '/liip/imagine-bundle/',
+    'Imagine'   => array($vendorDir .'/imagine/imagine/lib/'),
+    'Liip\\ImagineBundle' => array($vendorDir . '/liip/imagine-bundle/'),
 );

@@ -26,14 +26,14 @@ class CompanyType extends AbstractType
             ->add('mst', null, array('required' => false))
             ->add('email', null, array('required' => false))
             ->add('website', null, array('required' => false))
+            ->add('thumb', 'file', array(
+                'required' => false,
+                'data_class' => null
+            ))
             ->add('status', 'checkbox', array(
                 'required' => false
             ))
             ->add('company_languages', 'collection', array('type' => new CompanyLanguageType()))
-            ->add('logo', 'file', array(
-                'required' => false,
-                'data_class' => null
-            ))
         ;
     }
 

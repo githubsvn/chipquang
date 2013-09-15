@@ -114,9 +114,9 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="logo", type="string", nullable=true)
+     * @ORM\Column(name="thumb", type="string", length=255, nullable=true)
      */
-    public $logo;
+    public $thumb;
 
     /**
      * @var string
@@ -503,29 +503,6 @@ class Company
     }
 
     /**
-     * Set logo
-     *
-     * @param string $logo
-     * @return Company
-     */
-    public function setLogo($logo)
-    {
-        $this->logo = $logo;
-
-        return $this;
-    }
-
-    /**
-     * Get logo
-     *
-     * @return string
-     */
-    public function getLogo()
-    {
-        return $this->logo;
-    }
-
-    /**
      * Set website
      *
      * @param string $website
@@ -547,5 +524,27 @@ class Company
     {
         return $this->website;
     }
+    
+    /**
+     * Set thumb
+     *
+     * @param string $thumb
+     * @return Products
+     */
+    public function setThumb($thumb)
+    {
+        $this->thumb = $thumb;
 
+        return $this;
+    }
+
+    /**
+     * Get thumb
+     *
+     * @return string
+     */
+    public function getThumb()
+    {
+        return $this->thumb;
+    }
 }

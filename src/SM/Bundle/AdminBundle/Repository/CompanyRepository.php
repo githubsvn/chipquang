@@ -35,17 +35,12 @@ class CompanyRepository extends EntityRepository
      */
     public function deleteByIds($ids = array())
     {
-        //Get path upload logo
-        $uploadPath = $this->getContainer()->getParameter('upload') . '/logo';
-        $webDir = $this->getContainer()->get('kernel')->getRootDir() . '/../web';
-        $uploadDir = $webDir . $uploadPath;
-
         $em = $this->getEntityManager();
         $rst = array();
         if (is_array($ids) && count($ids)) {
             foreach ($ids as $id) {
                 $entity = $this->find($id);
-                $image = $entity->getLogo();
+                $image = $entity->getThumb();
                 $em->remove($entity);
                 if ($em->getUnitOfWork()->getEntityState($entity) == UnitOfWork::STATE_REMOVED) {
                     $rst[] = $id;

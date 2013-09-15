@@ -142,7 +142,7 @@ class MediaCategoryController extends Controller
                 foreach ($entity->getMediacategoryLanguages() as $catLanguage) {
                     $name = $catLanguage->getName();
                     if (empty($name)) {
-                        $entity->removeMeidacategoryLanguage($catLanguage);
+                        $entity->removeMediacategoryLanguage($catLanguage);
                         $entityManager->remove($catLanguage);
                     }
                 }

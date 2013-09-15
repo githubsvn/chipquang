@@ -12,11 +12,11 @@ SM\Bundle\AdminBundle\Entity\Company:
             - Regex:
                 pattern: "/\d/"
                 message: Your charter capital is only valid.
-        logo:
-            - Image:
-                mimeTypesMessage: This file is not valid image
-                maxSize: 10M
-                maxSizeMessage: The file is too large ({{ size }}). Allowed maximum size is {{ limit }} M
+        #thumb:
+        #    - Image:
+        #        mimeTypesMessage: This file is not valid image
+        #        maxSize: 10M
+        #        maxSizeMessage: The file is too large ({{ size }}). Allowed maximum size is {{ limit }} M
         website:
             - Regex:
                 pattern: "/[a-z0-9A-Z]+(\.)[a-z0-9A-Z]+([a-zA-Z])/"

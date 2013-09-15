@@ -22,7 +22,7 @@ class UserType extends AbstractType
         $builder
             ->add('username')
             ->add('fullname', null, array('required' => false))
-            ->add('password')
+            ->add('password', 'password', array('required' => false))
             ->add('email', null, array('required' => false))
             ->add('role_collection')
             ->add('group');
